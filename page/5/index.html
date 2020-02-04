@@ -98,84 +98,6 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/">Web前端安全</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/Web/">Web</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="cookie"><a href="#cookie" class="headerlink" title="#cookie"></a>#cookie</h3><p>-定义：存储在浏览器中的纯文本<br>-JS中访问Cookie-document cookie 只能获取非httpOnly<br>-属性选项：expires，domain，path，secure，HttpOnly<br>-domain，path俩个属性决定什么时候cookie被浏览器发送出去<br>-发生跨域ajax请求 即使请求URL的域名和路径都满足cookie的domain和path 默认情况下cookie也不会自动被添加到http头部 –可以是本身/父项<br>-secure设置 保证网页是Http协议的 HttpOnly不能通过JS代码区设置 只能通过服务器来设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.修改cookie-重新赋值，path&#x2F;domain与旧保持一样</span><br><span class="line">2.删除cookie-重新赋值，expires设置成过去的时间</span><br><span class="line">3.编码-escape</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/CTF%E4%B8%AD%E7%9A%84Web/">CTF中的Web</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/Web/">Web</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="基础要求"><a href="#基础要求" class="headerlink" title="#基础要求"></a>#基础要求</h3><p>Mysql,Oracle,Mssql,Access等SQL语法的细微区别<br>PHP，Java,JS,Ruby,Python,Lua等编程语言特性<br>Tomcat,IIS,Apache,Nginx,WebLogic，JBoss,Jetty等Web服务器特性<br>-举例<br>Access 查询数据 偏移注入 跨库查询</p>
-          <div class="read-more">
-            <a href="/2019/10/23/CTF%E4%B8%AD%E7%9A%84Web/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/%E9%80%86%E5%90%91/">逆向</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/%E9%80%86%E5%90%91/">逆向</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="二进制编辑器"><a href="#二进制编辑器" class="headerlink" title="#二进制编辑器"></a>#二进制编辑器</h3><p>010 Editor<br>EditPlus<br>反汇编器</p>
-<h3 id="IDA"><a href="#IDA" class="headerlink" title="#IDA"></a>#IDA</h3><p>设置Date,Code(d,c)<br>查看Cross Reference(x)<br>查看String List(Shift+F12）</p>
-          <div class="read-more">
-            <a href="/2019/10/23/%E9%80%86%E5%90%91/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/NJUPT%E7%BA%BF%E4%B8%8A%E6%94%BB%E9%98%B2WP/">NJUPT线上攻防WP</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/WP/">WP</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="签到题"><a href="#签到题" class="headerlink" title="#签到题"></a>#签到题</h3><p>F12获得flag<br>nctf{flag_admiaanaaaaaaaaaaa}</p>
-          <div class="read-more">
-            <a href="/2019/10/23/NJUPT%E7%BA%BF%E4%B8%8A%E6%94%BB%E9%98%B2WP/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/10/23/Misc/">Misc</a>
         </h1>
 
@@ -211,6 +133,80 @@
     <div class="post-content"><h3 id="基础姿势"><a href="#基础姿势" class="headerlink" title="#基础姿势"></a>#基础姿势</h3><p>Alice-Bob 第三方Oscar<br>明文P 密文C 秘钥K<br>对称密码体制：加密解密法则一样，一个秘钥<br>穷举/统计分析/数学分析攻击<br>唯密文/已知明文/选择明文/选择密文攻击<br>计算/可证明/无条件安全性</p>
           <div class="read-more">
             <a href="/2019/10/23/Crypto/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/02/04/SQL%E9%9D%A2%E7%BB%8F/">SQL面经</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-02-04
+        </span><span class="post-category">
+            <a href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="/images/pasted-234.png" alt="upload successful"></p>
+          <div class="read-more">
+            <a href="/2019/02/04/SQL%E9%9D%A2%E7%BB%8F/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/02/04/XSS%E9%9D%A2%E7%BB%8F/">XSS面经</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-02-04
+        </span><span class="post-category">
+            <a href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="/images/pasted-235.png" alt="upload successful"></p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/">网络安全原理与实践（1）</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-02-04
+        </span><span class="post-category">
+            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/"> 网络安全原理与实践</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>第一章 网络安全介绍的读书笔记<br><img src="/images/pasted-230.png" alt="upload successful"></p>
+          <div class="read-more">
+            <a href="/2019/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/02/01/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%A2%E7%BB%8F/">渗透测试面经</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-02-01
+        </span><span class="post-category">
+            <a href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="/images/pasted-226.png" alt="upload successful"></p>
+          <div class="read-more">
+            <a href="/2019/02/01/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%A2%E7%BB%8F/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/4/">

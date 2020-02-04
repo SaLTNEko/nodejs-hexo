@@ -98,85 +98,6 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/">网络安全原理与实践（1）</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-04
-        </span><span class="post-category">
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/"> 网络安全原理与实践</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p>第一章 网络安全介绍的读书笔记<br><img src="/images/pasted-230.png" alt="upload successful"></p>
-          <div class="read-more">
-            <a href="/2020/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/03/Python-4/">Python(4)</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-03
-        </span><span class="post-category">
-            <a href="/categories/Python/">Python</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="常用函数"><a href="#常用函数" class="headerlink" title="#常用函数"></a>#常用函数</h3><p>*字符显示格式<br>title():以首字母大写的形式显示单词<br>upper():字符串全部大写<br>lower():字符串全部小写</p>
-          <div class="read-more">
-            <a href="/2020/02/03/Python-4/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/03/Python-3/">Python(3)</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-03
-        </span><span class="post-category">
-            <a href="/categories/Pythom/">Pythom</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="循环停止的三种方法"><a href="#循环停止的三种方法" class="headerlink" title="#循环停止的三种方法"></a>#循环停止的三种方法</h3><p>1）<code>while循环</code>中使用条件语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&quot;what&#39;s your name?:&quot;</span><br><span class="line">message&#x3D;&#39;&#39;</span><br><span class="line">while message !&#x3D; &#39;quit&#39;:</span><br><span class="line">    message&#x3D;input(str)</span><br><span class="line">    </span><br><span class="line">    if message !&#x3D;&#39;quit&#39;</span><br><span class="line">    print(message)</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/02/03/Python-3/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/03/Python-json%E8%A7%A3%E6%9E%90/">Python json解析</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-03
-        </span><span class="post-category">
-            <a href="/categories/Python/">Python</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p>json文件地址:<a href="http://www.arachni-scanner.com/reports/report.json" target="_blank" rel="noopener">http://www.arachni-scanner.com/reports/report.json</a><br>下载保存为<code>test1.json</code></p>
-<h3 id="取出字典中的键值"><a href="#取出字典中的键值" class="headerlink" title="#取出字典中的键值"></a>#取出字典中的键值</h3><p><img src="/images/pasted-187.png" alt="upload successful"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">import  json</span><br><span class="line"></span><br><span class="line">db &#x3D; pymysql.connect(host&#x3D;&#39;localhost&#39;,user&#x3D;&#39;root&#39;,passwd&#x3D;&#39;saltneko&#39;,db&#x3D;&#39;test3&#39;) #连接数据库</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line">filename&#x3D;&#39;&#x2F;Users&#x2F;salt&#x2F;PycharmProjects&#x2F;Study&#x2F;test1.json&#39;</span><br><span class="line">with open(filename, &#39;rb&#39;) as f:</span><br><span class="line">    Data &#x3D; json.load(f)</span><br><span class="line">    s &#x3D; Data[&#39;options&#39;][&#39;checks&#39;] #直接取字典的键值</span><br><span class="line">    i &#x3D; 1</span><br><span class="line">    for a in s:</span><br><span class="line">        sql&#x3D;&#39;insert into web_loophole_type (Id,Web_loophole_type_description_en) values(&#39; + str(</span><br><span class="line">            i) + &quot;,&#39;&quot; + a + &quot;&#39;&quot; + &#39;);&#39;</span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        db.commit()</span><br><span class="line">        i &#x3D; i + 1</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/02/03/Python-json%E8%A7%A3%E6%9E%90/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2020/02/03/Hexo%E7%9A%84%E8%BF%81%E7%A7%BB%EF%BC%88mac%E7%AF%87%EF%BC%89/">Hexo的迁移（mac篇）</a>
         </h1>
 
@@ -289,6 +210,84 @@
     <div class="post-content"><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="#准备工作"></a>#准备工作</h3><p>若你的Mac OS系统为10.11或更高版本：<br>1.重新启动Mac OS<br>2.重启时按住Command+R，进入Recovery模式<br>3.选择实用工具里的终端并输入:<br>csrutil disable;<br>4.重新启动，回到Mac OS</p>
           <div class="read-more">
             <a href="/2020/02/03/Scrapy%E5%9C%A8Mac%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2020/02/02/Iterm%E4%B8%BB%E9%A2%98%E9%AD%94%E6%94%B9/">Iterm主题魔改</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-02
+        </span><span class="post-category">
+            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="效果图"><a href="#效果图" class="headerlink" title="#效果图"></a>#效果图</h3><p><img src="/images/pasted-170.png" alt="upload successful"><br>粉嫩的少女心hhhh</p>
+<h3 id="配色方案"><a href="#配色方案" class="headerlink" title="#配色方案"></a>#配色方案</h3><p>solarized（<a href="http://ethanschoonover.com/solarized" target="_blank" rel="noopener">http://ethanschoonover.com/solarized</a>) ，下载解压后在iTerm2偏好设置下的preference-&gt;colors-&gt;Color Presets(右下角）-&gt;import,选择solarized—&gt;iterm2-colors-solarized-&gt;Solarized Light.itermcolors</p>
+          <div class="read-more">
+            <a href="/2020/02/02/Iterm%E4%B8%BB%E9%A2%98%E9%AD%94%E6%94%B9/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2020/02/02/Python%E8%B8%A9%E5%9D%91/">Python踩坑</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-02
+        </span><span class="post-category">
+            <a href="/categories/Python/">Python</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="PIP更新"><a href="#PIP更新" class="headerlink" title="#PIP更新"></a>#PIP更新</h3><p>1.pip install xxxx安装第三方库时报错<br><img src="/images/pasted-162.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">You are using pip version 9.0.1, however version 9.0.2 is available.</span><br><span class="line">You should consider upgrading via the &#39;pip install --upgrade pip&#39; command.</span><br></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2020/02/02/Python%E8%B8%A9%E5%9D%91/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/11/18/PHP%E8%AF%AD%E6%B3%95/">PHP语法</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-18
+        </span><span class="post-category">
+            <a href="/categories/PHP/">PHP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="注释"><a href="#注释" class="headerlink" title="#注释"></a>#注释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 单行注释</span><br><span class="line">&#x2F;&#x2F; 单行注释</span><br><span class="line">&#x2F;* xxxx *&#x2F; 多行注释</span><br></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2019/11/18/PHP%E8%AF%AD%E6%B3%95/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/11/18/%E4%B8%80%E4%B8%AA%E6%8A%A2%E7%BA%A2%E5%8C%85%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/">一个抢红包引发的血案</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-18
+        </span><span class="post-category">
+            <a href="/categories/WP/">WP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>题目下载 <a href="https://pan.baidu.com/s/1mkd236C" target="_blank" rel="noopener">https://pan.baidu.com/s/1mkd236C</a><br>Tips 文件结构:<br><a href="http://blog.csdn.net/hetoby/article/details/51365460" target="_blank" rel="noopener">http://blog.csdn.net/hetoby/article/details/51365460</a></p>
+          <div class="read-more">
+            <a href="/2019/11/18/%E4%B8%80%E4%B8%AA%E6%8A%A2%E7%BA%A2%E5%8C%85%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">

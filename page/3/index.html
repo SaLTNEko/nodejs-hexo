@@ -98,26 +98,6 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/11/18/Bugku-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">Bugku-代码审计</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-11-18
-        </span><span class="post-category">
-            <a href="/categories/WP/">WP</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="extract变量覆盖"><a href="#extract变量覆盖" class="headerlink" title="#extract变量覆盖"></a>#extract变量覆盖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$flag&#x3D;&#39;xxx&#39;;</span><br><span class="line">extract($_GET);</span><br><span class="line">if(isset($shiyan))</span><br><span class="line">&#123;</span><br><span class="line">$content&#x3D;trim(file_get_contents($flag));</span><br><span class="line">if($shiyan&#x3D;&#x3D;$content)</span><br><span class="line">&#123;</span><br><span class="line">echo&#39;flag&#123;xxx&#125;&#39;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">echo&#39;Oh.no&#39;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>传输方式：get<br>要求：$shiyan==$content<br>题解：extract()函数, 将GET方式获得的变量导入到当前的符号表中<br>构造payload:<code>http://120.24.86.145:9009/1.php?flag=&amp;shiyan=</code></p>
-          <div class="read-more">
-            <a href="/2019/11/18/Bugku-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/11/18/Bugku-%E5%8A%A0%E5%AF%86/">Bugku-加密</a>
         </h1>
 
@@ -297,6 +277,26 @@
 <h3 id="0x00截断"><a href="#0x00截断" class="headerlink" title="#0x00截断"></a>#0x00截断</h3><p>0x00截断，00截断是将上传文件名或路径名中使用ascll码值为0的字符（也就是null）来进行截断<br>1）BP抓包<br>2）在/Upload/后面加一个空格，点开hex，将其对应的20改成00即可，就可以绕过后缀名的过滤，从而得到webshell</p>
 <h3 id="00截断"><a href="#00截断" class="headerlink" title="#%00截断"></a>#%00截断</h3><p>%00一般用在URL中用于截断url来进行文件包含<br>1）BP抓包<br>2）在filename后面加%00.jpg，先绕过后缀上传，然后利用burp的urldecode功能，其实和/00截断将hex20变成00一样，效果一样，两种方法都可以拿webshell</p>
 
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/10/27/Python%E7%9A%84CMD%E8%BF%90%E8%A1%8C%E5%92%8Chexo%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Python的CMD运行和hexo的环境配置</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-27
+        </span><span class="post-category">
+            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>写在最前面：大概就是自己脑子一抽明明在有pycharm的情况下硬耗着想用CMD来运行Py脚本（明明连python2/3版本都不好切换 大概觉得用命令行比较帅（x</p>
+<p>步骤：<br>Win键-&gt;设置-&gt;搜索系统属性-&gt;高级-&gt;环境变量-&gt;在Path中加入python的路径<br>注意的是不同的路径间用英文的;分开</p>
+          <div class="read-more">
+            <a href="/2019/10/27/Python%E7%9A%84CMD%E8%BF%90%E8%A1%8C%E5%92%8Chexo%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="read-more-link">Read more..</a>
+          </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">
         <i class="iconfont icon-left"></i>

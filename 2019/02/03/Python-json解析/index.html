@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 <meta name="description" content="Python json解析"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
-<link rel="canonical" href="http://yoursite.com/2020/02/03/Python-json解析/"/>
+<link rel="canonical" href="http://yoursite.com/2019/02/03/Python-json解析/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
@@ -103,7 +103,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2020-02-03
+          2019-02-03
         </span><span class="post-category">
             <a href="/categories/Python/">Python</a>
             </span>
@@ -116,9 +116,10 @@
       <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#取出字典中的键值"><span class="toc-text">#取出字典中的键值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典中存在不同的键取出键值"><span class="toc-text">#字典中存在不同的键取出键值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过遍历数组对其中包含的字典取出键值"><span class="toc-text">#通过遍历数组对其中包含的字典取出键值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组中包含字典"><span class="toc-text">#数组中包含字典</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典中包含字典"><span class="toc-text">#字典中包含字典</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>json文件地址:<a href="http://www.arachni-scanner.com/reports/report.json" target="_blank" rel="noopener">http://www.arachni-scanner.com/reports/report.json</a><br>下载保存为<code>test1.json</code></p>
+<a id="more"></a>
 <h3 id="取出字典中的键值"><a href="#取出字典中的键值" class="headerlink" title="#取出字典中的键值"></a>#取出字典中的键值</h3><p><img src="/images/pasted-187.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">import  json</span><br><span class="line"></span><br><span class="line">db &#x3D; pymysql.connect(host&#x3D;&#39;localhost&#39;,user&#x3D;&#39;root&#39;,passwd&#x3D;&#39;saltneko&#39;,db&#x3D;&#39;test3&#39;) #连接数据库</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line">filename&#x3D;&#39;&#x2F;Users&#x2F;salt&#x2F;PycharmProjects&#x2F;Study&#x2F;test1.json&#39;</span><br><span class="line">with open(filename, &#39;rb&#39;) as f:</span><br><span class="line">    Data &#x3D; json.load(f)</span><br><span class="line">    s &#x3D; Data[&#39;options&#39;][&#39;checks&#39;] #直接取字典的键值</span><br><span class="line">    i &#x3D; 1</span><br><span class="line">    for a in s:</span><br><span class="line">        sql&#x3D;&#39;insert into web_loophole_type (Id,Web_loophole_type_description_en) values(&#39; + str(</span><br><span class="line">            i) + &quot;,&#39;&quot; + a + &quot;&#39;&quot; + &#39;);&#39;</span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        db.commit()</span><br><span class="line">        i &#x3D; i + 1</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+<!--more-->
 <h3 id="字典中存在不同的键取出键值"><a href="#字典中存在不同的键取出键值" class="headerlink" title="#字典中存在不同的键取出键值"></a>#字典中存在不同的键取出键值</h3><p><img src="/images/pasted-188.png" alt="upload successful"><br><img src="/images/pasted-189.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db &#x3D; pymysql.connect(host&#x3D;&#39;localhost&#39;,user&#x3D;&#39;root&#39;,passwd&#x3D;&#39;saltneko&#39;,db&#x3D;&#39;test3&#39;)</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line">filename&#x3D;&#39;&#x2F;Users&#x2F;salt&#x2F;PycharmProjects&#x2F;Study&#x2F;test1.json&#39;</span><br><span class="line">with open(filename, &#39;rb&#39;) as f:</span><br><span class="line">    Data &#x3D; json.load(f)</span><br><span class="line">    s1 &#x3D; Data[&#39;sitemap&#39;]</span><br><span class="line">    s2 &#x3D; Data[&#39;plugins&#39;][&#39;healthmap&#39;][&#39;results&#39;][&#39;map&#39;]</span><br><span class="line">    i &#x3D; 1</span><br><span class="line">#map作为一个列表,通过遍历其中取出的key为字典</span><br><span class="line">    for key1 in s1.keys():</span><br><span class="line">        for i in s2:</span><br><span class="line">            try:</span><br><span class="line">                key1 &#x3D; (i[&#39;without_issues&#39;])</span><br><span class="line">            except:</span><br><span class="line">                continue</span><br><span class="line">                #因为存在with_issues和without_issues俩种键，加入异常处理</span><br><span class="line">            sql&#x3D;&#39;insert into sitemap(Id,Sitemap,Healthymap) values(&#39; + str(i) + &quot;,&#39;&quot; + key1 + &quot;&#39;&quot; + &quot;,&#39;&quot;+key2+&quot;&#39;&quot;+&#39;);&#39;</span><br><span class="line">            cursor.execute(sql)</span><br><span class="line">            db.commit()</span><br><span class="line">            i&#x3D;i+1</span><br></pre></td></tr></table></figure>
 <p>or</p>
@@ -136,13 +137,13 @@
       
       <footer class="post-footer">
         
-        <nav class="post-nav"><a class="prev" href="/2020/02/03/Python-3/">
+        <nav class="post-nav"><a class="prev" href="/2019/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Python(3)</span>
+        <span class="prev-text nav-default">网络安全原理与实践（1）</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
-    <a class="next" href="/2020/02/03/Hexo%E7%9A%84%E8%BF%81%E7%A7%BB%EF%BC%88mac%E7%AF%87%EF%BC%89/">
-        <span class="next-text nav-default">Hexo的迁移（mac篇）</span>
+    <a class="next" href="/2019/02/01/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E9%9D%A2%E7%BB%8F/">
+        <span class="next-text nav-default">渗透测试面经</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>

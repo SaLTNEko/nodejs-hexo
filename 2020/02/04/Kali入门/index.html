@@ -38,7 +38,7 @@
 </script>
 
     <title>Kali入门 - Saltneko</title>
-  </head>
+  <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -118,7 +118,7 @@
   </div><div class="post-content"><h3 id="主机探测"><a href="#主机探测" class="headerlink" title="#主机探测"></a>#主机探测</h3><p>1.1 ping检查主机是否在线<br>例：<code>ping -c 5 -s 2000 192.168.1.3</code> 发送五个大小为2000的字节包到目标主机<br>1.2 arping测试特定IP在网络中是否在线<br>例：<code>arping -c 5 192.168.1.3</code>发送四个ping数据包到目标主机</p>
 <a id="more"></a>
 <p>1.3 hping发送数据并监听返回数据包<br>例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hping3	#进入TCL脚本交互式界面</span><br><span class="line">hping send &#123;ip(daddr=192.168.1.3)+icmp(type=0,code=0)&#125;	#向目标主机发送一个icmp echo requset请求数据包</span><br><span class="line">hping recv ech0	#用户监听返回的数据包</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hping3	#进入TCL脚本交互式界面</span><br><span class="line">hping send &#123;ip(daddr&#x3D;192.168.1.3)+icmp(type&#x3D;0,code&#x3D;0)&#125;	#向目标主机发送一个icmp echo requset请求数据包</span><br><span class="line">hping recv ech0	#用户监听返回的数据包</span><br></pre></td></tr></table></figure>
 <p>1.4 nbtscan扫描ip地址获取目标NetBIOS名字信息<br>例：<br><code>nbtscan 192.168.1.3</code> 获取目标NetBIOS名字信息<br><code>nbtscan -hv 192.168.1.3</code> 查看目标主机运行服务<br>1.5 nping 支持多协议并允许用户设置设置网络报文格式的探测工具<br>例：<code>nping -c 2 -p 80 --flags syn 192.168.1.3</code> 向目标主机80端口发送2个带SYN标志的TCP数据包</p>
 
       </div>
@@ -143,7 +143,7 @@
 </div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
         <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">

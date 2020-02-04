@@ -38,7 +38,7 @@
 </script>
 
     <title>Redhat基础测试 - Saltneko</title>
-  </head>
+  <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -118,9 +118,9 @@
   </div><div class="post-content"><h3 id="安装"><a href="#安装" class="headerlink" title="#安装"></a>#安装</h3><p>镜像地址：<br>ed2k://|file|[红帽企业Linux.6.4.服务器版].rhel-server-6.4-x86_64-dvd[ED2000.COM].iso|3720347648|542c0277eff8b86b7f0c18358df84702|h=hzclqmdk4re2o4pi5hzr5hpvnu5o4iij|/<br>（复制到迅雷打开）<br>PS. 用VMware安装时，显示网络连接错误，将虚拟机选项中的网络适配器选择为桥接模式</p>
 <a id="more"></a>
 <h3 id="口令安全"><a href="#口令安全" class="headerlink" title="#口令安全"></a>#口令安全</h3><p>1.编辑<code>/etc/login.defs</code> 修改<code>PASS_MIN_LEN参数</code>（最小口令长度） 具体修改代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su - （提升权限）</span><br><span class="line">vim /etc/login.defs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su - （提升权限）</span><br><span class="line">vim &#x2F;etc&#x2F;login.defs</span><br></pre></td></tr></table></figure>
 <p><img src="/images/pasted-80.png" alt="upload successful"><br>2.编辑<code>/etc/pam.d/system-auth</code>修改password requisite pam_cracklib.so try_first_pass<br>local-only retry authok_type中的<code>retry</code>参数值(错误登录锁定次数)<br><img src="/images/pasted-81.png" alt="upload successful"><br>3.<img src="/images/pasted-82.png" alt="upload successful"><br>4.<img src="/images/pasted-83.png" alt="upload successful"><br>5.<img src="/images/pasted-84.png" alt="upload successful"><br><img src="/images/pasted-85.png" alt="upload successful"><br>具体修改代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">passwd -f gdm</span><br><span class="line">New password：</span><br><span class="line">Retype new password：//重复俩次输入密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">passwd -f gdm</span><br><span class="line">New password：</span><br><span class="line">Retype new password：&#x2F;&#x2F;重复俩次输入密码</span><br></pre></td></tr></table></figure>
 <h3 id="账户安全"><a href="#账户安全" class="headerlink" title="#账户安全"></a>#账户安全</h3><p>1.<img src="/images/pasted-86.png" alt="upload successful"><br>2.<img src="/images/pasted-87.png" alt="upload successful"><br>3.<img src="/images/pasted-88.png" alt="upload successful"></p>
 <h3 id="用户账户安全设置"><a href="#用户账户安全设置" class="headerlink" title="#用户账户安全设置"></a>#用户账户安全设置</h3><p>1.<img src="/images/pasted-91.png" alt="upload successful"><br>2.<img src="/images/pasted-90.png" alt="upload successful"></p>
 
@@ -146,7 +146,7 @@
 </div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
         <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">

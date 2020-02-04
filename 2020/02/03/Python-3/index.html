@@ -38,7 +38,7 @@
 </script>
 
     <title>Python(3) - Saltneko</title>
-  </head>
+  <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -116,12 +116,12 @@
       <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环停止的三种方法"><span class="toc-text">#循环停止的三种方法</span></a></li></ol>
     </div>
   </div><div class="post-content"><h3 id="循环停止的三种方法"><a href="#循环停止的三种方法" class="headerlink" title="#循环停止的三种方法"></a>#循环停止的三种方法</h3><p>1）<code>while循环</code>中使用条件语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str=&quot;what&apos;s your name?:&quot;</span><br><span class="line">message=&apos;&apos;</span><br><span class="line">while message != &apos;quit&apos;:</span><br><span class="line">    message=input(str)</span><br><span class="line">    </span><br><span class="line">    if message !=&apos;quit&apos;</span><br><span class="line">    print(message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&quot;what&#39;s your name?:&quot;</span><br><span class="line">message&#x3D;&#39;&#39;</span><br><span class="line">while message !&#x3D; &#39;quit&#39;:</span><br><span class="line">    message&#x3D;input(str)</span><br><span class="line">    </span><br><span class="line">    if message !&#x3D;&#39;quit&#39;</span><br><span class="line">    print(message)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>2)使用<code>变量active</code>来控制循环的结束</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str=&quot;what&apos;s your name?:&quot;</span><br><span class="line">active=True</span><br><span class="line">while active:</span><br><span class="line">    message=input(str)</span><br><span class="line">    if message==&apos;quit&apos;:</span><br><span class="line">        active=False</span><br><span class="line">    else:</span><br><span class="line">        print(message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&quot;what&#39;s your name?:&quot;</span><br><span class="line">active&#x3D;True</span><br><span class="line">while active:</span><br><span class="line">    message&#x3D;input(str)</span><br><span class="line">    if message&#x3D;&#x3D;&#39;quit&#39;:</span><br><span class="line">        active&#x3D;False</span><br><span class="line">    else:</span><br><span class="line">        print(message)</span><br></pre></td></tr></table></figure>
 <p>3)使用<code>break</code>结束循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str=&quot;what&apos;s your name?:&quot;</span><br><span class="line">message=&apos;&apos;</span><br><span class="line">while True:</span><br><span class="line">    message=input(str)</span><br><span class="line">    if message == &apos;quit&apos;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        print(message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&quot;what&#39;s your name?:&quot;</span><br><span class="line">message&#x3D;&#39;&#39;</span><br><span class="line">while True:</span><br><span class="line">    message&#x3D;input(str)</span><br><span class="line">    if message &#x3D;&#x3D; &#39;quit&#39;:</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        print(message)</span><br></pre></td></tr></table></figure>
       </div>
       
       <footer class="post-footer">
@@ -144,7 +144,7 @@
 </div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
         <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">

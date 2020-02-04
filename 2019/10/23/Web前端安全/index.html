@@ -38,7 +38,7 @@
 </script>
 
     <title>Web前端安全 - Saltneko</title>
-  </head>
+  <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -116,7 +116,7 @@
       <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-text">#cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器解析"><span class="toc-text">#浏览器解析</span></a></li></ol>
     </div>
   </div><div class="post-content"><h3 id="cookie"><a href="#cookie" class="headerlink" title="#cookie"></a>#cookie</h3><p>-定义：存储在浏览器中的纯文本<br>-JS中访问Cookie-document cookie 只能获取非httpOnly<br>-属性选项：expires，domain，path，secure，HttpOnly<br>-domain，path俩个属性决定什么时候cookie被浏览器发送出去<br>-发生跨域ajax请求 即使请求URL的域名和路径都满足cookie的domain和path 默认情况下cookie也不会自动被添加到http头部 –可以是本身/父项<br>-secure设置 保证网页是Http协议的 HttpOnly不能通过JS代码区设置 只能通过服务器来设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.修改cookie-重新赋值，path/domain与旧保持一样</span><br><span class="line">2.删除cookie-重新赋值，expires设置成过去的时间</span><br><span class="line">3.编码-escape</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.修改cookie-重新赋值，path&#x2F;domain与旧保持一样</span><br><span class="line">2.删除cookie-重新赋值，expires设置成过去的时间</span><br><span class="line">3.编码-escape</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
 <h3 id="浏览器解析"><a href="#浏览器解析" class="headerlink" title="#浏览器解析"></a>#浏览器解析</h3><p>-实体编号 例：<code>&lt; -&amp;#60</code><br>-HTML<br>空元素<br>原始文本<br>RCDATA元素，可以容纳文本和字符引用<br>外部元素，（MathML或SVG命名空间元素）<br>基本元素<br><code>&lt;textarea&gt;</code>or<code>&lt;title&gt;</code>需要闭合</p>
@@ -143,7 +143,7 @@
 </div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
         <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">

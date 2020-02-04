@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Iterm主题魔改"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2020/02/02/Iterm主题魔改/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Iterm主题魔改 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Iterm主题魔改
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-02
+        </span><span class="post-category">
+            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-text">#效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配色方案"><span class="toc-text">#配色方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装oh-my-zsh"><span class="toc-text">#安装oh-my-zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Oh-My-Zsh"><span class="toc-text">#配置Oh My Zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动提示命令"><span class="toc-text">#自动提示命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法高亮"><span class="toc-text">#语法高亮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#玄学处理"><span class="toc-text">#玄学处理</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="效果图"><a href="#效果图" class="headerlink" title="#效果图"></a>#效果图</h3><p><img src="/images/pasted-55.png" alt="upload successful"><br>粉嫩的少女心hhhh</p>
+<h3 id="配色方案"><a href="#配色方案" class="headerlink" title="#配色方案"></a>#配色方案</h3><p>solarized（<a href="http://ethanschoonover.com/solarized" target="_blank" rel="noopener">http://ethanschoonover.com/solarized</a>) ，下载解压后在iTerm2偏好设置下的preference-&gt;colors-&gt;Color Presets(右下角）-&gt;import,选择solarized—&gt;iterm2-colors-solarized-&gt;Solarized Light.itermcolors</p>
+<a id="more"></a>
+<h3 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="#安装oh-my-zsh"></a>#安装oh-my-zsh</h3><p><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh</code></p>
+<h3 id="配置Oh-My-Zsh"><a href="#配置Oh-My-Zsh" class="headerlink" title="#配置Oh My Zsh"></a>#配置Oh My Zsh</h3><p>命令行输入<code>vi ~/.zshrc</code><br><img src="/images/pasted-56.png" alt="upload successful"><br>修改<code>ZSH_THEME=&quot;agnoster&quot;</code><br>按i修改 结束后按<code>esc</code>键输入<code>:wq</code>确认写入</p>
+<p>应用这个主题需要Meslo字体（<a href="https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf）" target="_blank" rel="noopener">https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf）</a><br>下载安装到系统字体册<br>iTerm-&gt;Preferences-&gt;Profiles-&gt;Text-&gt;Change Font，设置Family为Meslo LG M Regular for Powerline，Size为14<br><img src="/images/pasted-57.png" alt="upload successful"></p>
+<h3 id="自动提示命令"><a href="#自动提示命令" class="headerlink" title="#自动提示命令"></a>#自动提示命令</h3><p>cd进入<code>~/.oh-my-zsh/custom/plugins</code>路径下<br><code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code><br>命令行输入<code>vi ~/.zshrc</code><br><img src="/images/pasted-58.png" alt="upload successful"><br>修改plugins=(zsh-autosuggestions git)</p>
+<h3 id="语法高亮"><a href="#语法高亮" class="headerlink" title="#语法高亮"></a>#语法高亮</h3><p>1.使用homebrew安装 zsh-syntax-highlighting 插件<br><code>brew install zsh-syntax-highlighting</code><br>2.配置.zshrc文件<code>(vi ~/.zshrc</code>)，插入一行<br><code>source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</code><br>3.命令行输入命令<br><code>source ~/.zshrc</code></p>
+<p>透明度调整<br>窗口：iTerm-&gt;Preferences-&gt;Profiles-&gt;Window-&gt;Transparency<br><img src="/images/pasted-59.png" alt="upload successful"><br>文字,标签：iTerm-&gt;Preferences-&gt;Profiles-&gt;colors-&gt;Minimum contrast/Cursor Boost<br><img src="/images/pasted-60.png" alt="upload successful"></p>
+<h3 id="玄学处理"><a href="#玄学处理" class="headerlink" title="#玄学处理"></a>#玄学处理</h3><p>mac自带终端会因为字体设置出现乱码的问题<br>终端-&gt;偏好设置-&gt;描述文件-&gt;文本-&gt;字体，设置系列为Meslo LG M Regular for Powerline，大小为14，按左下角的默认确认保存<br><img src="/images/pasted-61.png" alt="upload successful"><br>另：启动时默认主题的设定<br><img src="/images/pasted-62.png" alt="upload successful"></p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2020/02/03/Scrapy%E5%9C%A8Mac%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Scrapy在Mac上的安装</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2020/02/02/Python%E8%B8%A9%E5%9D%91/">
+        <span class="next-text nav-default">Python踩坑</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

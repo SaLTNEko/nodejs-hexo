@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="学术安全"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2019/10/23/学术安全/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>学术安全 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">学术安全
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-23
+        </span><span class="post-category">
+            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多host头"><span class="toc-text">#多host头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Host头增加前后空格"><span class="toc-text">#Host头增加前后空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绝对路径被当作相对路径解析"><span class="toc-text">#绝对路径被当作相对路径解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存污染"><span class="toc-text">#缓存污染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#任意网站Squid透明缓存污染"><span class="toc-text">任意网站Squid透明缓存污染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Co-hosting透明缓存污染"><span class="toc-text">Co-hosting透明缓存污染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DN缓存污染"><span class="toc-text">DN缓存污染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙绕过"><span class="toc-text">#防火墙绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WAF绕过"><span class="toc-text">WAF绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#歧义组合"><span class="toc-text">歧义组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测存在与攻击"><span class="toc-text">#检测存在与攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防御"><span class="toc-text">#防御</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="多host头"><a href="#多host头" class="headerlink" title="#多host头"></a>#多host头</h3><p>发送带有多 Host 的http 请求，downstream 与 upstream 可能理解成不同的 host地址，此情况出现条件较为复杂</p>
+<h3 id="Host头增加前后空格"><a href="#Host头增加前后空格" class="headerlink" title="#Host头增加前后空格"></a>#Host头增加前后空格</h3><p>不同系统对空格理解不一致，歧义再次产生<br>request uri是绝对路径</p>
+<h3 id="绝对路径被当作相对路径解析"><a href="#绝对路径被当作相对路径解析" class="headerlink" title="#绝对路径被当作相对路径解析"></a>#绝对路径被当作相对路径解析</h3><p>当Absoult-URL与Host同时出现时，除了akamai大多数遵循RFC<br>造成攻击</p>
+<a id="more"></a>
+<h3 id="缓存污染"><a href="#缓存污染" class="headerlink" title="#缓存污染"></a>#缓存污染</h3><h4 id="任意网站Squid透明缓存污染"><a href="#任意网站Squid透明缓存污染" class="headerlink" title="任意网站Squid透明缓存污染"></a>任意网站Squid透明缓存污染</h4><p>针对 squid重灾区，通过request-uri路径标识进行欺骗，首先发送欺骗请求至 attack.comg攻击者自己搭的服务器，squid缓存判断attack.com == 1.1.1.1 记录 cache，cache host被记录为 victim.com，造成之后命中 cache都被定向到 attack 恶意攻击网站.<br>squid缓存污染可污染任意网站，危害很严重，在小区缓存或校园 cache都可能严重的污染定向问题。</p>
+<h4 id="Co-hosting透明缓存污染"><a href="#Co-hosting透明缓存污染" class="headerlink" title="Co-hosting透明缓存污染"></a>Co-hosting透明缓存污染</h4><p>针对 host 空格的解析出现问题<br>条件：attack.com和victim使用同一家CDN</p>
+<h4 id="DN缓存污染"><a href="#DN缓存污染" class="headerlink" title="DN缓存污染"></a>DN缓存污染</h4><p>作者针对alibaba解析多 host时出现的 host 顺序调整进行测试，出现CDN-&gt; Squid host倒置的问题<br>host的处理不一致</p>
+<h3 id="防火墙绕过"><a href="#防火墙绕过" class="headerlink" title="#防火墙绕过"></a>#防火墙绕过</h3><p>ESET优先访问第二个host<br>Nginx优先访问第一个内容</p>
+<h4 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h4><p>request URI scheme attack</p>
+<h4 id="歧义组合"><a href="#歧义组合" class="headerlink" title="歧义组合"></a>歧义组合</h4><p>存在202个可以被利用的Downstream-Upstream组合</p>
+<h3 id="检测存在与攻击"><a href="#检测存在与攻击" class="headerlink" title="#检测存在与攻击"></a>#检测存在与攻击</h3><p>网站广告<br>客户端广告</p>
+<h3 id="防御"><a href="#防御" class="headerlink" title="#防御"></a>#防御</h3><p>RFC标准应准确无误<br>对于厂商，不同系统应完全遵循RFC7230<br>拒绝多Host头包含前后空格的Host头请求<br>对于网站管理员，可以部署https，并启用pre-loaded HSTS来减轻攻击的危害</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/10/23/GlassFish/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">GlassFish</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/10/23/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E6%B3%A8/">
+        <span class="next-text nav-default">记一次手注</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

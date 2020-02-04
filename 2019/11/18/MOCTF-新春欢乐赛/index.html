@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="MOCTF-新春欢乐赛"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2019/11/18/MOCTF-新春欢乐赛/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>MOCTF-新春欢乐赛 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">MOCTF-新春欢乐赛
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-18
+        </span><span class="post-category">
+            <a href="/categories/WP/">WP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#是时候让你手指锻炼一下了"><span class="toc-text">#是时候让你手指锻炼一下了</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse"><span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哇，有毒吧"><span class="toc-text">#哇，有毒吧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc"><span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流量分析"><span class="toc-text">#流量分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base全家桶"><span class="toc-text">#base全家桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜文字"><span class="toc-text">#颜文字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奇怪的十六进制"><span class="toc-text">#奇怪的十六进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先越过这道栅栏再说"><span class="toc-text">#先越过这道栅栏再说</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#空word"><span class="toc-text">#空word</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="是时候让你手指锻炼一下了"><a href="#是时候让你手指锻炼一下了" class="headerlink" title="#是时候让你手指锻炼一下了"></a>#是时候让你手指锻炼一下了</h3><p>代码审计<br><img src="/images/pasted-12.png" alt="upload successful"><br>构造payload ?clicks=108000<br>moctf{Here_Is_Your_Surprise}</p>
+<a id="more"></a>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h2><h3 id="哇，有毒吧"><a href="#哇，有毒吧" class="headerlink" title="#哇，有毒吧"></a>#哇，有毒吧</h3><p>直接base64解码最后一串字符串<br>moctf{true?}</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="#流量分析"></a>#流量分析</h3><p>追踪一段TCP流<br><img src="/images/pasted-13.png" alt="upload successful"><br>moctf{c@N_y0U_4lnd_m8}</p>
+<h3 id="base全家桶"><a href="#base全家桶" class="headerlink" title="#base全家桶"></a>#base全家桶</h3><p>python脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">s=&apos;&apos;</span><br><span class="line">a=base64.b64/32/16decode(s)</span><br><span class="line">print a</span><br></pre></td></tr></table></figure>
+<p>依次按照16 32 64的顺序解码<br>moctf{Base_Quan_Jia_Tong}</p>
+<h3 id="颜文字"><a href="#颜文字" class="headerlink" title="#颜文字"></a>#颜文字</h3><p>浏览器控制台跑一下<br>moctf{Yan_Wen_Zi}</p>
+<h3 id="奇怪的十六进制"><a href="#奇怪的十六进制" class="headerlink" title="#奇怪的十六进制"></a>#奇怪的十六进制</h3><p>5a 45 64 6f 63 45 35 57 4f 48 68 6a 4d 54 6c 74 59 6b 64 46 4e 51 3d 3d<br>16进制转换为字符再base64解码</p>
+<h3 id="先越过这道栅栏再说"><a href="#先越过这道栅栏再说" class="headerlink" title="#先越过这道栅栏再说"></a>#先越过这道栅栏再说</h3><p>先栅栏 再凯撒<br><img src="/images/pasted-15.png" alt="upload successful"><br>再凯撒<br><img src="/images/pasted-16.png" alt="upload successful"><br>moctf{y0u_f1nd_1t}</p>
+<h3 id="空word"><a href="#空word" class="headerlink" title="#空word"></a>#空word</h3><p>将内容复制粘贴至sublime<br>Tab键替换为_ 空格替换为.<br>每行加上/<br>最后摩尔斯电码解密<br>moctf{Bl4nk_0r_tab?}</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/11/18/Bugku-Web/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Bugku-Web</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/10/27/Bugku-Misc/">
+        <span class="next-text nav-default">Bugku-Misc</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="CTF中的Web"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2019/10/23/CTF中的Web/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>CTF中的Web - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">CTF中的Web
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-23
+        </span><span class="post-category">
+            <a href="/categories/Web/">Web</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础要求"><span class="toc-text">#基础要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基础"><span class="toc-text">#基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#脑洞汇总"><span class="toc-text">#脑洞汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#源代码"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pyc"><span class="toc-text">.pyc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#waf"><span class="toc-text">waf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CTF-Trick"><span class="toc-text">#CTF Trick</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP弱类型"><span class="toc-text">PHP弱类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#序列化-反序列化"><span class="toc-text">序列化/反序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XSS-CSRF-SSRF-RCE-Upload"><span class="toc-text">XSS+CSRF+SSRF+RCE+Upload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#源码审计"><span class="toc-text">源码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSRF的利用"><span class="toc-text">CSRF的利用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XSS"><span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSRF"><span class="toc-text">CSRF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLi"><span class="toc-text">SQLi</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件包含和文件上传"><span class="toc-text">文件包含和文件上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#变量覆盖"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码审计"><span class="toc-text">代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见功能点漏洞"><span class="toc-text">常见功能点漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#变量覆盖-1"><span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#union注入"><span class="toc-text">union注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#报错注入"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boolean盲注"><span class="toc-text">boolean盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写脚本"><span class="toc-text">写脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Timing盲注"><span class="toc-text">Timing盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件读写"><span class="toc-text">文件读写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#waf-1"><span class="toc-text">waf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写脚本-1"><span class="toc-text">写脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#杂技"><span class="toc-text">#杂技</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件包含"><span class="toc-text">#文件包含</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="基础要求"><a href="#基础要求" class="headerlink" title="#基础要求"></a>#基础要求</h3><p>Mysql,Oracle,Mssql,Access等SQL语法的细微区别<br>PHP，Java,JS,Ruby,Python,Lua等编程语言特性<br>Tomcat,IIS,Apache,Nginx,WebLogic，JBoss,Jetty等Web服务器特性<br>-举例<br>Access 查询数据 偏移注入 跨库查询</p>
+<a id="more"></a>
+<h3 id="基础"><a href="#基础" class="headerlink" title="#基础"></a>#基础</h3><p>一、爆破，包括包括md5、爆破随机数、验证码识别等<br>二、绕WAF，包括花式绕Mysql、绕文件读取关键词检测之类拦截<br>三、花式玩弄几个PHP特性，包括弱类型，strpos和===，反序列化+destruct、\0截断、iconv截断、<br>四、密码题，包括hash长度扩展、异或、移位加密各种变形、32位随机数过小<br>五、各种找源码技巧，包括git、svn、xxx.php.swp、www.(zip|tar.gz|rar|7z)、xxx.php.bak、<br>六、文件上传，包括花式文件后缀 .php345 .inc .phtml .phpt .phps、各种文件内容检测<code>&lt;?php &lt;? &lt;% &lt;script language=php&gt;</code>、花式解析漏洞、<br>七、Mysql类型差异，包括和PHP弱类型类似的特性,0x、0b、1e之类，varchar和integer相互转换<br>八、open_basedir、disable_functions花式绕过技巧，包括dl、mail、imagick、bash漏洞、DirectoryIterator及各种二进制选手插足的方法<br>九、条件竞争，包括竞争删除前生成shell、竞争数据库无锁多扣钱<br>十、社工，包括花式查社工库、微博、QQ签名、whois<br>十一、windows特性，包括短文件名、IIS解析漏洞、NTFS文件系统通配符、::$DATA，冒号截断<br>十二、SSRF，包括花式探测端口，302跳转、花式协议利用、gophar直接取shell等<br>十三、XSS，各种浏览器auditor绕过、富文本过滤黑白名单绕过、flash xss、CSP绕过<br>十四、XXE，各种XML存在地方（rss/word/流媒体）、各种XXE利用方法（SSRF、文件读取）<br>十五、协议，花式IP伪造 X-Forwarded-For/X-Client-IP/X-Real-IP/CDN-Src-IP、花式改UA，花式藏FLAG、花式分析数据包</p>
+<h3 id="脑洞汇总"><a href="#脑洞汇总" class="headerlink" title="#脑洞汇总"></a>#脑洞汇总</h3><h4 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h4><p>robot.txt<br>comment<br>vim_swap_file</p>
+<h4 id="pyc"><a href="#pyc" class="headerlink" title=".pyc"></a>.pyc</h4><p>.DS_Store<br>.git<br>.svn<br>bak file</p>
+<h4 id="waf"><a href="#waf" class="headerlink" title="waf"></a>waf</h4><p>字符替换空型waf<br>特殊字符（串）拦截型waf</p>
+<h3 id="CTF-Trick"><a href="#CTF-Trick" class="headerlink" title="#CTF Trick"></a>#CTF Trick</h3><h4 id="PHP弱类型"><a href="#PHP弱类型" class="headerlink" title="PHP弱类型"></a>PHP弱类型</h4><h4 id="序列化-反序列化"><a href="#序列化-反序列化" class="headerlink" title="序列化/反序列化"></a>序列化/反序列化</h4><h4 id="XSS-CSRF-SSRF-RCE-Upload"><a href="#XSS-CSRF-SSRF-RCE-Upload" class="headerlink" title="XSS+CSRF+SSRF+RCE+Upload"></a>XSS+CSRF+SSRF+RCE+Upload</h4><h4 id="源码审计"><a href="#源码审计" class="headerlink" title="源码审计"></a>源码审计</h4><h4 id="CSRF的利用"><a href="#CSRF的利用" class="headerlink" title="CSRF的利用"></a>CSRF的利用</h4><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><p>-基础弹窗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;</span><br><span class="line">&lt;img src=1 onerror=alert(&quot;XSS&quot;)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>-总结</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.输入在标签间：测试&lt;&gt;是否被过滤</span><br><span class="line">2.在JS标签内：保证JS语法的正确性（控制俩处输入且\可以用，存在宽字节）</span><br></pre></td></tr></table></figure>
+
+<p>-分类<br>1.反射型XSS</p>
+<p>2.存储型XSS<br>修改参数，提交后查看页面源代码，寻找输出位置<br>例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输出在&lt;b&gt;标签中 不需要闭合 直接XSS</span><br><span class="line">input的value标签里面 “&gt;+XSS</span><br></pre></td></tr></table></figure>
+<p>tips:选择框可以BP改 注意每一个Post参数<br>转义尖括号 “闭合 标签内构造属性<br>例:<br>1)href属性 构造JS伪协议<code>javascript:alert(docment.dcmain)</code><br>2)Domain被过滤<code>javascript:alert(docment.&amp;#100,&amp;#111.&amp;#109.&amp;#97.&amp;#105.&amp;#110)</code><br>3)把<code>script/on/style/</code>大小写过滤：<code>&lt;iframe src=&quot;data:text/html;base64,.......&quot;&gt;&lt;/iframe&gt;</code>(创建子窗口在父窗口弹窗)<br>4)<code>&gt;&lt;</code>均被转义 输出在JS的字符串当中 可以使用JS字符串的编码方式/unicode编码/八进制编码<br>5)输出在注释里 payload：<code>换行+%0Aalert(1);//</code><br>6)反斜杠干掉双引号 中间变成一串字符串；用//注释掉多余的东西；=的优先级问题可以==替代；function XXX(){}优先级最高 防止提示未定义；空格用<code>/**/</code>替代<br>7)换行问题 用/链接字符串 加%c0吃掉转义符<br>*尽量少用<code>//</code>注释 <code>\</code>转义</p>
+<p>3.Dom-XSS</p>
+<p>4.跨域问题：<br>-同源:协议、域名、端口（默认80）相同<br>-非同源：cookie/LocalStorage/IndexDB无法读取 DOM无法获得 AJAX请求不能发送<br>-二级域名相同（父子、兄弟域:允许通过设置document.domain共享cookie<br>-跨域请求:JSONP WebSoket CORS<br>-JSONP注入:通过添加一个<code>&lt;script&gt;</code>元素，通过src属性向服务器请求json数据，服务器将数据放在一个指定名字的回调函数返回 <code>foo({“ip”:”8.8.8.8
+“})</code>(不造是啥但能执行 )<code>callback/jsonp/…=.（函数名）..</code>的API<br>-防御：校验referer（但可从HTTPS向http发请求或在src中用data:base64）<br>callback=alert(1);//有反射型注入<br>-CORS:允许浏览器向不同源服务器发出任何请求<br>-简单请求:head/get/post<br>-加origin头:如果可以会回<code>acess-control-allow-origin</code>等<br>双方withCredentials:true且acess-control-allow-origin不为<code>*</code>才能接受cookie<br>-预检请求<br>-回旋镖<br>-穿甲伤害</p>
+<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><p>html css flash</p>
+<h4 id="SQLi"><a href="#SQLi" class="headerlink" title="SQLi"></a>SQLi</h4><p>各种绕过。。</p>
+<h4 id="文件包含和文件上传"><a href="#文件包含和文件上传" class="headerlink" title="文件包含和文件上传"></a>文件包含和文件上传</h4><p>伪协议<br>各种校验<br>.htaccess文件<br>变量与函数:一切输入都是有害的,一切进入函数的变量都是有害的<br>参数传递<br>可控变量<br>敏感功能点<br>通读代码</p>
+<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><p>危险函数</p>
+<h4 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h4><h4 id="常见功能点漏洞"><a href="#常见功能点漏洞" class="headerlink" title="常见功能点漏洞"></a>常见功能点漏洞</h4><p>登陆认证功能<br>SQL注入<br>Cookie认证问题<br>危险函数<br>pars_str()<br>import_request_variables</p>
+<h4 id="变量覆盖-1"><a href="#变量覆盖-1" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><p>工具<br>BP<br>Sqlmap</p>
+<h4 id="union注入"><a href="#union注入" class="headerlink" title="union注入"></a>union注入</h4><p>有回显<br>猜解字段数目 limit a,b<br>最方便</p>
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><h4 id="boolean盲注"><a href="#boolean盲注" class="headerlink" title="boolean盲注"></a>boolean盲注</h4><h4 id="写脚本"><a href="#写脚本" class="headerlink" title="写脚本"></a>写脚本</h4><p>截取字符串 left substr mid regexp if</p>
+<h4 id="Timing盲注"><a href="#Timing盲注" class="headerlink" title="Timing盲注"></a>Timing盲注</h4><p>无回显<br>效率低</p>
+<h4 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h4><p>select LOADFILE(‘/etc/passwd’);之类的写shell进去也可以</p>
+<h4 id="waf-1"><a href="#waf-1" class="headerlink" title="waf"></a>waf</h4><p>双写关键字 seselectlect OorR<br>大小写<br>编码绕过（直接认识16进制）<br>变换姿势 &lt;—&gt; || &amp;&amp; 空格 select(username)from(admin) 科学计数法绕过 where username=1e1union select in,between,like access中info=dlookup()<br>特殊字符 <code>/**/``内联注释``%00``% 反引号</code></p>
+<h4 id="写脚本-1"><a href="#写脚本-1" class="headerlink" title="写脚本"></a>写脚本</h4><p><a href="http://58.154.33.13:8003/?order=if((select(mid(flag,1,2))from(flag)),name,price" target="_blank" rel="noopener">http://58.154.33.13:8003/?order=if((select(mid(flag,1,2))from(flag)),name,price</a><br>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">‘a’ 11000110</span><br><span class="line">$b 0000001 &amp; 1一位一位向前移</span><br><span class="line">$c 0000000 根据这个是不是1回显判断原来的</span><br></pre></td></tr></table></figure>
+<h3 id="杂技"><a href="#杂技" class="headerlink" title="#杂技"></a>#杂技</h3><p>二次注入<br>宽子节注入<br>Access偏移注入<br>万能密码<br>Mongodb注入<br>隐蔽注入<br>Mysql过长截断</p>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="#文件包含"></a>#文件包含</h3><p>LFI<br>读取敏感文件<br>包含一句话木马getshell<br>包含日志文件getshell<br>读取页面源代码<br>/about.php?f=php://filter/convert.base64-encode/resource=index.php</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Web前端安全</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/10/23/%E9%80%86%E5%90%91/">
+        <span class="next-text nav-default">逆向</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

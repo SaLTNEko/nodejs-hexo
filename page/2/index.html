@@ -110,7 +110,7 @@
         </div>
     </header>
 
-    <div class="post-content"><p>第一章 网络安全介绍的读书笔记<br><img src="/images/pasted-113.png" alt="upload successful"></p>
+    <div class="post-content"><p>第一章 网络安全介绍的读书笔记<br><img src="/images/pasted-230.png" alt="upload successful"></p>
           <div class="read-more">
             <a href="/2020/02/04/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%881%EF%BC%89/" class="read-more-link">Read more..</a>
           </div>
@@ -169,7 +169,7 @@
     </header>
 
     <div class="post-content"><p>json文件地址:<a href="http://www.arachni-scanner.com/reports/report.json" target="_blank" rel="noopener">http://www.arachni-scanner.com/reports/report.json</a><br>下载保存为<code>test1.json</code></p>
-<h3 id="取出字典中的键值"><a href="#取出字典中的键值" class="headerlink" title="#取出字典中的键值"></a>#取出字典中的键值</h3><p><img src="/images/pasted-73.png" alt="upload successful"></p>
+<h3 id="取出字典中的键值"><a href="#取出字典中的键值" class="headerlink" title="#取出字典中的键值"></a>#取出字典中的键值</h3><p><img src="/images/pasted-187.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">import  json</span><br><span class="line"></span><br><span class="line">db &#x3D; pymysql.connect(host&#x3D;&#39;localhost&#39;,user&#x3D;&#39;root&#39;,passwd&#x3D;&#39;saltneko&#39;,db&#x3D;&#39;test3&#39;) #连接数据库</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line">filename&#x3D;&#39;&#x2F;Users&#x2F;salt&#x2F;PycharmProjects&#x2F;Study&#x2F;test1.json&#39;</span><br><span class="line">with open(filename, &#39;rb&#39;) as f:</span><br><span class="line">    Data &#x3D; json.load(f)</span><br><span class="line">    s &#x3D; Data[&#39;options&#39;][&#39;checks&#39;] #直接取字典的键值</span><br><span class="line">    i &#x3D; 1</span><br><span class="line">    for a in s:</span><br><span class="line">        sql&#x3D;&#39;insert into web_loophole_type (Id,Web_loophole_type_description_en) values(&#39; + str(</span><br><span class="line">            i) + &quot;,&#39;&quot; + a + &quot;&#39;&quot; + &#39;);&#39;</span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        db.commit()</span><br><span class="line">        i &#x3D; i + 1</span><br></pre></td></tr></table></figure>
           <div class="read-more">
             <a href="/2020/02/03/Python-json%E8%A7%A3%E6%9E%90/" class="read-more-link">Read more..</a>
@@ -248,7 +248,7 @@
         </div>
     </header>
 
-    <div class="post-content"><h3 id="扫站"><a href="#扫站" class="headerlink" title="#扫站"></a>#扫站</h3><p>1.1 Nmap端口扫描<br><img src="/images/pasted-65.png" alt="upload successful"></p>
+    <div class="post-content"><h3 id="扫站"><a href="#扫站" class="headerlink" title="#扫站"></a>#扫站</h3><p>1.1 Nmap端口扫描<br><img src="/images/pasted-179.png" alt="upload successful"></p>
           <div class="read-more">
             <a href="/2020/02/03/%E4%B8%89%E8%84%9A%E7%8C%AB%E5%B0%8F%E5%A5%97%E8%B7%AF/" class="read-more-link">Read more..</a>
           </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-30T11:46:34.701Z</updated>
+  <updated>2021-01-30T11:50:39.921Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://yoursite.com/2021/01/30/Github-wp/"/>
     <id>http://yoursite.com/2021/01/30/Github-wp/</id>
     <published>2021-01-30T11:09:00.000Z</published>
-    <updated>2021-01-30T11:46:34.701Z</updated>
+    <updated>2021-01-30T11:50:39.921Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="常见的搜集"><a href="#常见的搜集" class="headerlink" title="#常见的搜集"></a>#常见的搜集</h3><p>1.查看泄漏目录<code>python3 dirsearch.py -u http://challenge-ff56d3fec964fb86.sandbox.ctfhub.com:10080/</code><br><img src="/images/pasted-237.png" alt="upload successful"><br>2.robots.txt<br><img src="/images/pasted-238.png" alt="upload successful"><br>flag1_is_her3_fun.txt<br><img src="/images/pasted-239.png" alt="upload successful"><br>3.index.php~<br><img src="/images/pasted-240.png" alt="upload successful"><br>4..index.php.swp<br><code>cat index.php.swp</code><br><img src="/images/pasted-241.png" alt="upload successful"><br>flag:n1book{info_1s_v3ry_imp0rtant_hack}</p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<h3 id="常见的搜集"><a href="#常见的搜集" class="headerlink" title="#常见的搜集"></a>#常见的搜集</h3><p>1.查看泄漏目录<code>python3 dirsearch.py -u http://challenge-ff56d3fec964fb86.sandbox.ctfhub.com:10080/</code><br><img src="/images/pasted-237.png" alt="upload successful"></p><a id="more"></a><p>2.robots.txt<br><img src="/images/pasted-238.png" alt="upload successful"><br>flag1_is_her3_fun.txt<br><img src="/images/pasted-239.png" alt="upload successful"><br>3.index.php~<br><img src="/images/pasted-240.png" alt="upload successful"><br>4..index.php.swp<br><code>cat index.php.swp</code><br><img src="/images/pasted-241.png" alt="upload successful"><br>flag:n1book{info_1s_v3ry_imp0rtant_hack}</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;常见的搜集&quot;&gt;&lt;a href=&quot;#常见的搜集&quot; class=&quot;headerlink&quot; title=&quot;#常见的搜集&quot;&gt;&lt;/a&gt;#常见的搜集&lt;/h3&gt;&lt;p&gt;1.查看泄漏目录&lt;code&gt;python3 dirsearch.py -u http://challenge-ff56d3fec964fb86.sandbox.ctfhub.com:10080/&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/pasted-237.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;2.robots.txt&lt;br&gt;&lt;img src=&quot;/images/pasted-238.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;flag1_is_her3_fun.txt&lt;br&gt;&lt;img src=&quot;/images/pasted-239.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;3.index.php~&lt;br&gt;&lt;img src=&quot;/images/pasted-240.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;4..index.php.swp&lt;br&gt;&lt;code&gt;cat index.php.swp&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/pasted-241.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;flag:n1book{info_1s_v3ry_imp0rtant_hack}&lt;/p&gt;
+      &lt;h3 id=&quot;常见的搜集&quot;&gt;&lt;a href=&quot;#常见的搜集&quot; class=&quot;headerlink&quot; title=&quot;#常见的搜集&quot;&gt;&lt;/a&gt;#常见的搜集&lt;/h3&gt;&lt;p&gt;1.查看泄漏目录&lt;code&gt;python3 dirsearch.py -u http://challenge-ff56d3fec964fb86.sandbox.ctfhub.com:10080/&lt;/code&gt;&lt;br&gt;&lt;img src=&quot;/images/pasted-237.png&quot; alt=&quot;upload successful&quot;&gt;&lt;/p&gt;
     
     </summary>
     

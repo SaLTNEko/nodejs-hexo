@@ -117,6 +117,7 @@
     </div>
   </div><div class="post-content"><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h3><p>因为char(0)表示的ascll字符是null，当程序输出包含chr(0)变量时，chr(0)后面的数据会被截断，后面的数据直接忽略，导致漏洞产生。</p>
 <h3 id="0x00截断"><a href="#0x00截断" class="headerlink" title="#0x00截断"></a>#0x00截断</h3><p>0x00截断，00截断是将上传文件名或路径名中使用ascll码值为0的字符（也就是null）来进行截断<br>1）BP抓包<br>2）在/Upload/后面加一个空格，点开hex，将其对应的20改成00即可，就可以绕过后缀名的过滤，从而得到webshell</p>
+<a id="more"></a>
 <h3 id="00截断"><a href="#00截断" class="headerlink" title="#%00截断"></a>#%00截断</h3><p>%00一般用在URL中用于截断url来进行文件包含<br>1）BP抓包<br>2）在filename后面加%00.jpg，先绕过后缀上传，然后利用burp的urldecode功能，其实和/00截断将hex20变成00一样，效果一样，两种方法都可以拿webshell</p>
 
       </div>
@@ -154,7 +155,7 @@
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
   </span>
 
-  <span class="copyright-year">&copy;2015 - 2020<span class="heart">
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
     <span class="author">Salt</span>

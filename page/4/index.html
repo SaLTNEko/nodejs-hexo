@@ -98,6 +98,26 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/10/27/%E6%88%AA%E6%96%AD%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">截断上传漏洞</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-27
+        </span><span class="post-category">
+            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h3><p>因为char(0)表示的ascll字符是null，当程序输出包含chr(0)变量时，chr(0)后面的数据会被截断，后面的数据直接忽略，导致漏洞产生。</p>
+<h3 id="0x00截断"><a href="#0x00截断" class="headerlink" title="#0x00截断"></a>#0x00截断</h3><p>0x00截断，00截断是将上传文件名或路径名中使用ascll码值为0的字符（也就是null）来进行截断<br>1）BP抓包<br>2）在/Upload/后面加一个空格，点开hex，将其对应的20改成00即可，就可以绕过后缀名的过滤，从而得到webshell</p>
+          <div class="read-more">
+            <a href="/2019/10/27/%E6%88%AA%E6%96%AD%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/10/27/Python%E7%9A%84CMD%E8%BF%90%E8%A1%8C%E5%92%8Chexo%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Python的CMD运行和hexo的环境配置</a>
         </h1>
 
@@ -275,25 +295,6 @@
 <h3 id="IDA"><a href="#IDA" class="headerlink" title="#IDA"></a>#IDA</h3><p>设置Date,Code(d,c)<br>查看Cross Reference(x)<br>查看String List(Shift+F12）</p>
           <div class="read-more">
             <a href="/2019/10/23/%E9%80%86%E5%90%91/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/NJUPT%E7%BA%BF%E4%B8%8A%E6%94%BB%E9%98%B2WP/">NJUPT线上攻防WP</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/WP/">WP</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="签到题"><a href="#签到题" class="headerlink" title="#签到题"></a>#签到题</h3><p>F12获得flag<br>nctf{flag_admiaanaaaaaaaaaaa}</p>
-          <div class="read-more">
-            <a href="/2019/10/23/NJUPT%E7%BA%BF%E4%B8%8A%E6%94%BB%E9%98%B2WP/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">

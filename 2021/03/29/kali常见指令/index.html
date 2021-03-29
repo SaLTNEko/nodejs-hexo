@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="kali常见指令"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="http://yoursite.com/2021/03/29/kali常见指令/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>kali常见指令 - Saltneko</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Saltneko</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archives
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/link/">
+        <li class="mobile-menu-item">Link
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Saltneko</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archives
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/link/">
+            Link
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">kali常见指令
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-03-29
+        </span><span class="post-category">
+            <a href="/categories/Kali/">Kali</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#KALI常见指令"><span class="toc-text">#KALI常见指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KALI部署网站"><span class="toc-text">#KALI部署网站</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="KALI常见指令"><a href="#KALI常见指令" class="headerlink" title="#KALI常见指令"></a>#KALI常见指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ps aux &#x2F;&#x2F;查看进程</span><br><span class="line">ps aux|grep [nginx] &#x2F;&#x2F;查看nginx进程</span><br><span class="line">ps -u [root] &#x2F;&#x2F;查看root用户进程</span><br><span class="line">#案例</span><br><span class="line">ps aux|grep 30504</span><br><span class="line">ls -lh &#x2F;proc&#x2F;30504</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">top &#x2F;&#x2F;查看实时进程 P:以cup占用降序排序 M：以内存占用降序排序 C:完整命令内容</span><br><span class="line">netstat -anp &#x2F;&#x2F;端口占用信息</span><br><span class="line">netstat -anpt &#x2F;&#x2F;只查看tcp端口信息</span><br><span class="line">uname -a &#x2F;&#x2F;查看当前操作的Linux内核</span><br><span class="line">lsb_release -a &#x2F;&#x2F;查看发行版本</span><br><span class="line">cat head tail &#x2F;&#x2F;查看文件全部&amp;头部&amp;尾部 -n参数指定输出行数</span><br><span class="line">tail -f auth.log &#x2F;&#x2F;实时地输出最新的日志</span><br><span class="line">ls &#x2F;var&#x2F;log &#x2F;&#x2F;查看日志目录</span><br><span class="line">crontab -l &#x2F;&#x2F;列表系统的计划任务</span><br><span class="line">crontab -e &#x2F;&#x2F;进入编辑模式</span><br><span class="line">crontab -u root -e &#x2F;&#x2F;查看特定用户的计划任务</span><br><span class="line">cat &#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F;[root] &#x2F;&#x2F;查看不同用户的计划任务</span><br><span class="line">history &#x2F;&#x2F;历史命令操作记录</span><br><span class="line">cat ~&#x2F;.bash_history &#x2F;&#x2F;查看命令操作历史                                      </span><br><span class="line">lastlog &#x2F;&#x2F;最后登录信息</span><br><span class="line">*last -f&#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;历史用户登录信息</span><br><span class="line">find . -name &quot;*.txt&quot; &#x2F;&#x2F;当前目录查找txt文件</span><br><span class="line"></span><br><span class="line">#查找时间范围内修改文件</span><br><span class="line">touch -t time1 t_start &#x2F;&#x2F;touch：生成空文件</span><br><span class="line">touch -t time2 t_end</span><br><span class="line">find . -type f -newer t_start ! -newer t_end &#x2F;&#x2F;查找时间段内修改的文件</span><br></pre></td></tr></table></figure>
+<h3 id="KALI部署网站"><a href="#KALI部署网站" class="headerlink" title="#KALI部署网站"></a>#KALI部署网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#目录信息：</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;             配置文件夹</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;        默认显示页面路径</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;nginx&#x2F;            模块依赖路径</span><br><span class="line">&#x2F;usr&#x2F;sbin&#x2F;nginx&#x2F;        可执行文件</span><br><span class="line"></span><br><span class="line">#操作命令</span><br><span class="line">php -v &#x2F;&#x2F;返回php版本7.4.15</span><br><span class="line">apt install php7.4-fpm</span><br><span class="line">vim &#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F;default</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-267.png" alt="upload successful"><br><img src="/images/pasted-268.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">vim 1.php</span><br><span class="line">&lt;?PHP phpinfo(); ?&gt;</span><br></pre></td></tr></table></figure>
+<p>访问127.0.0.1/1.php<br><img src="/images/pasted-269.png" alt="upload successful"></p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2021/03/29/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">redis未授权访问</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2021/02/11/XSS-challenge-tour/">
+        <span class="next-text nav-default">XSS-challenge-tour</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div>
+  <div class="comments" id="comments">
+    
+  </div>
+</div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:1281714262@qq.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/SaLTNEko" target="_blank" rel="noopener" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank" rel="noopener">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2015 - 2021<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Salt</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

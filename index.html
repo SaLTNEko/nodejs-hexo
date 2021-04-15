@@ -98,6 +98,30 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2021/04/14/vulhub%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/">vulhub靶场练习 </a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-04-14
+        </span><span class="post-category">
+            <a href="/categories/Vulhub/">Vulhub</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="ActiveMQ任意文件写入漏洞"><a href="#ActiveMQ任意文件写入漏洞" class="headerlink" title="#ActiveMQ任意文件写入漏洞"></a>#ActiveMQ任意文件写入漏洞</h3><h4 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h4><p>fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。</p>
+<h4 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps &#x2F;&#x2F;查看端口</span><br></pre></td></tr></table></figure>
+<ul>
+<li>页面登陆ip:8800端口</li>
+<li>登陆账号 admin/admin</li>
+<li>进入fileserver页面 抓包
+          <div class="read-more">
+            <a href="/2021/04/14/vulhub%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2021/03/29/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">redis未授权访问</a>
         </h1>
 
@@ -268,25 +292,6 @@
     <div class="post-content"><h3 id="安装"><a href="#安装" class="headerlink" title="#安装"></a>#安装</h3><p>镜像地址：<br>ed2k://|file|[红帽企业Linux.6.4.服务器版].rhel-server-6.4-x86_64-dvd[ED2000.COM].iso|3720347648|542c0277eff8b86b7f0c18358df84702|h=hzclqmdk4re2o4pi5hzr5hpvnu5o4iij|/<br>（复制到迅雷打开）<br>PS. 用VMware安装时，显示网络连接错误，将虚拟机选项中的网络适配器选择为桥接模式</p>
           <div class="read-more">
             <a href="/2020/02/04/Redhat%E5%9F%BA%E7%A1%80%E6%B5%8B%E8%AF%95/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2020/02/04/Kali%E5%85%A5%E9%97%A8/">Kali入门</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2020-02-04
-        </span><span class="post-category">
-            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="主机探测"><a href="#主机探测" class="headerlink" title="#主机探测"></a>#主机探测</h3><p>1.1 ping检查主机是否在线<br>例：<code>ping -c 5 -s 2000 192.168.1.3</code> 发送五个大小为2000的字节包到目标主机<br>1.2 arping测试特定IP在网络中是否在线<br>例：<code>arping -c 5 192.168.1.3</code>发送四个ping数据包到目标主机</p>
-          <div class="read-more">
-            <a href="/2020/02/04/Kali%E5%85%A5%E9%97%A8/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

